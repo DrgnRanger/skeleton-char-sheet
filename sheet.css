@@ -58,6 +58,14 @@
   border: 2px solid black;
 }
 
+.charsheet div.sheet-substat{
+  display: grid;
+  background-color: white;
+  justify-content: center;
+  padding: 3px;
+  border: 1px solid black;
+}
+
 .charsheet div.sheet-st{ 
         grid-area: st;
 }
@@ -97,18 +105,64 @@
 
 .charsheet div.sheet-Biometrics{ 
     grid-area: biom;
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "bio bio"
+        "inj cond"
+        "arm mov";
+}
+
+.charsheet div.sheet-biom{ 
+        grid-area: bio;
+}
+
+.charsheet div.sheet-inj{ 
+        grid-area: inj;
+}
+
+.charsheet div.sheet-cond{ 
+        grid-area: cond;
+}
+
+.charsheet div.sheet-arm{ 
+        grid-area: arm;
+}
+
+.charsheet div.sheet-mov{ 
+        grid-area: mov;
 }
 
 .charsheet div.sheet-Items-Equipment{ 
-    grid-area: iteq; 
+    grid-area: iteq;
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "equip addit"
+        "equip addit"
+        "wealprop addit";
+}
+
+.charsheet div.sheet-equip{ 
+        grid-area: equip;
+}
+
+.charsheet div.sheet-addit{ 
+        grid-area: addit;
+}
+
+.charsheet div.sheet-wealprop{ 
+        grid-area: wealprop;
 }
 
 .charsheet div.sheet-Skills{ 
     grid-area: skills; 
-    
 }
 
 .charsheet div.sheet-Boons-Curses{ 
     grid-area: bocu; 
-    
 }
