@@ -162,12 +162,13 @@ p{
     grid-area: biom;
     display: grid;
     grid-template-columns: 84px 84px; 
-    grid-template-rows: repeat(3, min-content); 
+    grid-template-rows: repeat(4, min-content); 
     gap: 2px 2px; 
     grid-template-areas: 
         "bio bio"
         "inju condi"
-        "armo mov";
+        "armo mov"
+        "biorolls biorolls";
 }
 
 .sheet-biomenu{
@@ -193,6 +194,23 @@ p{
 
 .sheet-movement{ 
     grid-area: mov;
+}
+
+.sheet-biometric-rolls{
+    grid-area: biorolls;
+}
+
+.sheet-rolls-col{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.sheet-rolls-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .sheet-items-equipment{ 
@@ -267,7 +285,6 @@ div.sheet-equipment input{
     grid-area: skillr1;
 }
 
-
 .sheet-skills-label-2{
     grid-area: skillr2;
 }
@@ -329,23 +346,21 @@ div.sheet-equipment input{
 
 .sheet-weapons{
     grid-area: weapons;
-    display: grid;
-    grid-template-columns: 222px 60px 60px 1fr;
-    grid-template-rows: 18px 18px minmax(50px, 1fr);
-    gap: 4px 4px; 
-    grid-template-areas: 
-        "whead whead whead whead"
-        "wc1 wc2 wc3 wc4"
-        "wlist wlist wlist wlist";
+
 }
 
 .repcontainer,
 .repitem{
-    grid-area: wlist;
     margin 0
     border 0
     padding 0
     display:contents;
+}
+
+.sheet-weapon-content{
+    display: grid;
+    grid-template-columns: 222px 60px 60px 1fr;
+
 }
 
 .sheet-repeating_weapons{
@@ -354,24 +369,4 @@ div.sheet-equipment input{
 
 .sheet-weapon-head{
     grid-area: whead;
-}
-
-.sheet-weapon-label-1{
-    grid-area: wc1;
-}
-
-.sheet-weapon-label-2{
-    grid-area: wc2;
-}
-
-.sheet-weapon-label-3{
-    grid-area: wc3;
-}
-
-.sheet-weapon-label-4{
-    grid-area: wc4;
-}
-
-.sheet-weapons-list-holder{
-    grid-area: wlist;
 }
