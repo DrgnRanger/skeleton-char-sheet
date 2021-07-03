@@ -1,43 +1,33 @@
-<div class = "sheet-switchtabs sheet-block">
-    <button type="action" name="act_character" >Character</button>
-    <button type="action" name="act_journal" >Journal</button>
-    <button type="action" name="act_configuration" >Configuration</button>
+<div class = "sheet-switchtabs sheet-container">
+    <button type="action" name="act_character">Character</button>
+    <button type="action" name="act_journal">Journal</button>
+    <button type="action" name="act_configuration">Configuration</button>
 </div>
     
 <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="character" />    
 
 <div class="sheet-thecharacter sheet-container">
     <div class="sheet-weapons sheet-block">
-        <div class="sheet-weapon-head">
+        <div class:"sheet-weapon-header">
             <label>Weapons</label>
         </div>
-            
-        <div class="sheet-weapon-label-1" style="width:90%">
+
+        <div class="sheet-weapon-content">
             <span>Name</span>
-        </div>
-            
-        <div class="sheet-weapon-label-2" style="width:90%">
             <span>Damage</span>
-        </div>
-        
-        <div class="sheet-weapon-label-3" style="width:90%">
             <span>Range</span>
-        </div>
-        
-        <div class="sheet-weapon-label-4" style="width:90%">
             <span>Notes</span>
         </div>
-        
-        <div class="sheet-weapons-list-holder">
+ 
             <fieldset class="repeating_weapons">
-    	        <span>
-    	            <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" placeholder="Weapon Name" style="width: 213px;"/>
-    	            <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 50px;"/>
-    	            <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" style="width: 50px;"/>
-    	            <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 350px;"/>
-    	        </span>
+                <div class="sheet-weapon-content">
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" placeholder="Weapon Name" style="width: 213px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 50px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" style="width: 50px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 350px;"/>
+                </div>
             </fieldset>
-        </div>
+        <div class="sheet-empty-space"></div>
     </div>
     
     <div class="sheet-skeleton-face">
@@ -67,14 +57,25 @@
 
     <div class="sheet-stats sheet-block">
         <div class="sheet-smstatistics">
-            <label>Attributes</label>
+            <h3>Attributes</h3>
             
-            <span>
-                <button type="roll" value="/roll 1d20 + @{Bluff}" name="roll_BluffCheck"></button>
-                <button type="roll" value="/roll 1d20 + @{Bluff}" name="roll_BluffCheck"></button>
-                <button type="roll" value="/roll 1d20 + @{Bluff}" name="roll_BluffCheck"></button>
-            </span>
+            <div class="sheet-attribute-rolls sheet-subblock">
+                <div class="sheet-rolls-row">
+                    <div class="sheet-rolls-col"><p style="font-weight: bold;">Ability Check</p></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Ability Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_AbilityCheck"></button></div>
+                </div> 
+                
+                <div class="sheet-rolls-row">    
+                    <div class="sheet-rolls-col"><p style="font-weight: bold;">Skill Check</p></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Skill Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{actrobatcheck} + @{climbcheck} + @{coercecheck} + @{engineercheck} + @{insightcheck} + @{marksmancheck} + @{martial_artscheck} + @{performancecheck} + @{pilotcheck} + @{rangercheck} + @{sleight_of_handcheck} + @{stealthcheck} + @{swimcheck} + @{treat_injurycheck} + @{throwingcheck} + @{custom_skill_1check} + @{custom_skill_2check} + @{custom_skill_3check} + @{custom_skill_4check} + @{custom_skill_5check} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_SkillCheck"></button></div>
+                </div>
+            
+                <div class="sheet-rolls-row">
+                    <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Initiative</p></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Initiative}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultInitiative"></button></div>
+                </div>
         </div>
+    </div>
         
         <div class="sheet-agi sheet-subblock">
             <label>Agi</label>
@@ -86,7 +87,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_agilitycheck" value="1d@{agility}!"/>
     			</span>
         </div>
         
@@ -100,7 +101,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_charismacheck" value="1d@{charisma}!"/>
     			</span>
         </div>
         
@@ -114,7 +115,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_dexteritycheck" value="1d@{dexteritycheck}!"/>
     			</span>
         </div>
         
@@ -128,7 +129,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_cunningcheck" value="1d@{cunningcheck}!"/>
     			</span>
         </div>
         
@@ -142,7 +143,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_constitutioncheck" value="1d@{constitution}!"/>
     			</span>
         </div>
         
@@ -156,7 +157,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_willpowercheck" value="1d@{willpowercheck}!"/>
     			</span>
         </div>
         
@@ -170,7 +171,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_strengthcheck" value="1d@{strength}!"/>
     			</span>
         </div>
         
@@ -184,7 +185,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_luckcheck" value="1d@{luck}!"/>
     			</span>
         </div>
     </div>
@@ -235,10 +236,10 @@
                     <div class="subcontainer" style="height: min-content; width: 70px;">
                         <div class="top">
                             <span style="font-size: 12px;">Current</span>
-                            <input type="number" name="attr_exhaustion" title="@{exhaustion}" class = "sheet-biomenu">
+                            <input type="number" name="attr_exhaustion" title="@{exhaustion}" class="sheet-biomenu">
                         </div>
                             <span style="font-size: 12px;">Total</span>
-                            <input type="number" name="attr_exhaustion_max" title="@{exhaustion_max}" class = "sheet-biomenu" disabled="true" value="(@{physical_injuries_max}) + (@{mental_injuries_max})">
+                            <input type="number" name="attr_exhaustion_max" title="@{exhaustion_max}" class="sheet-biomenu" disabled="true" value="(@{physical_injuries_max}) + (@{mental_injuries_max})">
                     </div>
             </div>
             
@@ -247,10 +248,10 @@
                     <div class="subcontainer" style="height: min-content; width: 70px;">
                         <div class="top">
                             <span style="font-size: 12px;">Current</span>
-                            <input type="number" name="attr_blood_points" title="@{blood_points}" class = "sheet-biomenu">
+                            <input type="number" name="attr_blood_points" title="@{blood_points}" class="sheet-biomenu">
                         </div>
                             <span style="font-size: 12px;">Total</span>
-                            <input type="number" name="attr_blood_points_max" title="@{blood_points_max}" class = "sheet-biomenu" disabled="true" value="@{constitution}">
+                            <input type="number" name="attr_blood_points_max" title="@{blood_points_max}" class="sheet-biomenu" disabled="true" value="@{constitution}">
                     </div>
             </div>
         </div>
@@ -260,14 +261,26 @@
                 <div class="subcontainer" style="height: min-content; width: 70px;">
                     <div class="top">
                         <span style="font-size: 12px;">Walk</span>
-                        <input type="number" name="attr_running_movement" title="@{running_movement}" class = "sheet-biomenu">
+                        <input type="number" name="attr_running_movement" title="@{running_movement}" class="sheet-biomenu">
                     </div>
                     
                     <div class = "bottom">
                         <span style="font-size: 12px;">Run</span>
-                        <input type="number" name="attr_walking_movement" title="@{walking_movement}" class = "sheet-biomenu">
+                        <input type="number" name="attr_walking_movement" title="@{walking_movement}" class="sheet-biomenu">
                     </div>
                 </div>
+        </div>
+        
+        <div class="sheet-biometric-rolls sheet-subblock">
+            <div class="sheet-rolls-row">
+                <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Phys. Soak</p></div>
+                <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Physical Soak}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak"></button></div>
+            </div>
+            
+            <div class="sheet-rolls-row">
+                <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Ment. Soak</p></div>
+                <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Mental Soak}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak"></button></div>
+            </div>
         </div>
     </div>
    
@@ -300,7 +313,7 @@
             <label>Additional Items</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 50px; max-width: 210px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 520px; max-height: 520px; max-width: 210px;; "></textarea>
                 </div>
             </div>
         </div>
@@ -309,7 +322,7 @@
             <label>Wealth and Property</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 50px; max-width: 210px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 300px; max-height: 300px; max-width: 210px;"></textarea>
                 </div>
             </div>
         </div>
@@ -331,7 +344,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_actrobatcheck" value="1d@{acrobat}!"/>
     			</span></div>
     			
             </div>
@@ -346,7 +359,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_climbcheck" value="1d@{climb}!"/>
     			</span></div>
     			
             </div>
@@ -361,7 +374,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_coercecheck" value="1d@{coerce}!"/>
     			</span></div>
 
             </div>
@@ -376,7 +389,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_engineercheck" value="1d@{engineer}!"/>
     			</span></div>
 
             </div>
@@ -391,7 +404,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_insightcheck" value="1d@{insight}!"/>
     			</span></div>
     			
             </div>
@@ -408,7 +421,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_marksmancheck" value="1d@{marksman}!"/>
     			</span></div>
 
             </div>
@@ -423,7 +436,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_martial_artscheck" value="1d@{martial_artscheck}!"/>
     			</span></div>
 
             </div>
@@ -438,7 +451,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_performancecheck" value="1d@{performance}!"/>
     			</span></div>
     			
             </div>
@@ -453,7 +466,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_pilotcheck" value="1d@{pilot}!"/>
     			</span></div>
 
             </div>
@@ -468,7 +481,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_rangercheck" value="1d@{ranger}!"/>
     			</span></div>
     			
             </div>
@@ -485,7 +498,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_sleight_of_handcheck" value="1d@{sleight_of_hand}!"/>
     			</span></div>
 
             </div>
@@ -500,7 +513,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_stealthcheck" value="1d@{stealth}!"/>
     			</span></div>
     			
             </div>
@@ -515,7 +528,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_swimcheck" value="1d@{swim}!"/>
     			</span></div>
    
             </div>
@@ -530,7 +543,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_treat_injurycheck" value="1d@{treat_injury}!"/>
     			</span></div>
     			
             </div>
@@ -545,7 +558,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_throwingcheck" value="1d@{throwing}!"/>
     			</span></div>
 
             </div>
@@ -554,7 +567,7 @@
         <div class="sheet-skills-label-4">
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_1_name" style="width: 100px;"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_1" title="@{custom_skill_1}" class="sheet-skilldie" value="4">
@@ -564,14 +577,14 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_custom_skill_1check" value="1d@{custom_skill_1}!"/>
     			</span></div>
 
             </div>
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_2_name" style="width: 100px;"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_2" title="@{custom_skill_2}" class="sheet-skilldie" value="4">
@@ -581,14 +594,14 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_custom_skill_2check" value="1d@{custom_skill_2}!"/>
     			</span></div>
 
             </div>
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_3_name" style="width: 100px;"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_3" title="@{custom_skill_3}" class="sheet-skilldie" value="4">
@@ -598,14 +611,14 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_custom_skill_3check" value="1d@{custom_skill_3}!"/>
     			</span></div>
 
             </div>
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_4_name" style="width: 100px;"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_4" title="@{custom_skill_4}" class="sheet-skilldie" value="4">
@@ -615,14 +628,14 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_custom_skill_4check" value="1d@{custom_skill_4}!"/>
     			</span></div>
 
             </div>
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_5_name" style="width: 100px;"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_5" title="@{custom_skill_5}" class="sheet-skilldie" value="4">
@@ -632,7 +645,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			    <input type="checkbox" name="attr_custom_skill_5check" value="1d@{custom_skill_5}!"/>
     			</span></div>
     			
             </div>
@@ -671,7 +684,7 @@
     				    <option value="12">d12</option>
     		        </select>
     		        <span>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_advantagecheck" value="1d@{advantage}!"/>
     			    </span>
     			</div>
     	<span>Disadvantage</span>
@@ -684,7 +697,7 @@
     			    	<option value="12">d12</option>
     			    </select>
     			    <span>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_disadvantagecheck" value="1d@{disadvantage}!"/>
     			    </span>
     			</div>
     	<span>Extra Adv. Die</span>
@@ -697,7 +710,7 @@
     				    <option value="12">d12</option>
     			    </select>
     			    <span>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_extra_advantagecheck" value="1d@{extra_adv_die}!"/>
     			    </span>
     			</div>
     	<span>Extra Dis. Die</span>
@@ -710,7 +723,7 @@
     				    <option value="12">d12</option>
     			    </select>
     			    <span>
-    			        <input type="checkbox" name="attr_magicitem1check" value="{{@magicitem1dice}}>@{difficulty}}"/>
+    			        <input type="checkbox" name="attr_extra_disadvantagecheck" value="1d@{extra_dis_die}!"/>
     			    </span>
     			</div>
     </div>
