@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Castoro&display=swap');
+
+span{
+    font-family: 'Castoro', Arial;
+}
+
+p{
+    font-family: 'Castoro', Arial;
+}
+
+.sheet-thecharacter,
+.sheet-config,
+.sheet-journal{
+    display: none;
+}
+
+.sheet-tabstoggle[value="character"] ~ div.sheet-thecharacter,
+.sheet-tabstoggle[value="configuration"] ~ div.sheet-config,
+.sheet-tabstoggle[value="journal"] ~ div.sheet-journal{
+    display: grid;
+}
+
+.sheet-journal{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "backs chartr"
+        "misc misc";
+}
+
+.sheet-configuration{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.sheet-thecharacter{
+    width: 842px;
+    grid-template-columns: 180px 180px 474px;
+    grid-template-rows: min-content min-content min-content 1fr 1fr min-content;
+    gap: 5px 5px;
+    grid-template-areas:
+        "skeleton chainf ."
+        "weapons weapons weapons"
+        "advdi bocu bocu"
+        "stats biom iteq"
+        "stats biom iteq"
+        "skills skills skills";
+}
+
+.sheet-skeleton-face{
+    grid-area: skeleton;
+}
+
+.sheet-container{
+  background-color: white;
+  justify-content: center;
+  padding: 4px 4px;
+  border: 3px solid black;
+  font-family:'Castoro'
+}
+
+.sheet-block{
+  background-color: white;
+  padding: 3px;
+  border: 3px solid black;
+  font-family:'Castoro'
+}
+
+.sheet-switchtabs{
+    width: 842px;
+    grid-area: tab; 
+}
+
+.sheet-cha-info{
+    grid-area: chainf;
+}
+
+.sheet-stats{ 
+    grid-area: stats;
+    display: grid;
+    grid-template-columns: 84px 84px; 
+    grid-template-rows: repeat(5, min-content); 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "st st"
+        "agi cha"
+        "dex cun"
+        "con will"
+        "str luck"; 
+}
+
+.sheet-subblock{
+    background-color: white;
+    justify-content: center;
+    padding: 3px;
+    border: 2px solid black;
+    font-family:'Castoro';
+}
+
+.sheet-substat{
+    background-color: white;
+    justify-content: center;
+    padding: 3px;
+    border: 1px solid black;
+    font-family:'Castoro'
+}
+
+.sheet-traitdie{
+    width: 56px;
+}
+
+.sheet-skilldie{
+    width: 56px;
+}
+
+.sheet-smstatistics{ 
+    grid-area: st;
+}
+
+.sheet-agi{ 
+    grid-area: agi;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden
+}
+
+.sheet-cha{ 
+    grid-area: cha;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden
+}
+
+.sheet-dex{ 
+    grid-area: dex;
+}
+
+.sheet-cun{ 
+    grid-area: cun;
+}
+
+.sheet-con{ 
+    grid-area: con;
+}
+
+.sheet-will{ 
+    grid-area: will;
+}
+
+.sheet-str{ 
+    grid-area: str;
+}
+
+.sheet-luck{ 
+    grid-area: luck;
+}
+
+
+.sheet-biometrics{ 
+    grid-area: biom;
+    display: grid;
+    grid-template-columns: 84px 84px; 
+    grid-template-rows: repeat(3, min-content); 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "bio bio"
+        "inju condi"
+        "armo mov";
+}
+
+.sheet-biomenu{
+    width: 40px;
+}
+
+.sheet-biom{ 
+    grid-area: bio;
+}
+
+.sheet-inj{ 
+    grid-area: inju;
+    height: max-content;
+}
+
+.sheet-cond{ 
+    grid-area: condi;
+}
+
+.sheet-arm{ 
+    grid-area: armo;
+}
+
+.sheet-movement{ 
+    grid-area: mov;
+}
+
+.sheet-items-equipment{ 
+    grid-area: iteq;
+    display: grid;
+    grid-template-columns: 230px 230px; 
+    grid-template-rows: repeat(4, min-content); 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "equiphead addit"
+        "equip addit"
+        "equip addit"
+        "wealprop addit";
+}
+
+div.sheet-equipment{ 
+    grid-area: equip;
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-gap: 2px;
+}
+
+.sheet-equiphead{
+    grid-area: equiphead;
+}
+
+div.sheet-equipment label{
+    text-align: center;
+}
+
+div.sheet-equipment input{
+    width: 180px;
+}
+
+.sheet-addit{ 
+    grid-area: addit;
+}
+
+.sheet-wealprop{ 
+    grid-area: wealprop;
+}
+
+.sheet-skills{ 
+    grid-area: skills;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: max-content 1fr; 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "shead shead shead shead"
+        "skillr1 skillr2 skillr3 skillr4";
+}
+
+.sheet-skills-head{
+    grid-area: shead;
+}
+
+.sheet-skills-column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.sheet-skill-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sheet-skills-label-1{
+    grid-area: skillr1;
+}
+
+
+.sheet-skills-label-2{
+    grid-area: skillr2;
+}
+
+.sheet-skills-label-3{
+    grid-area: skillr3;
+}
+
+.sheet-skills-label-4{
+    grid-area: skillr4;
+}
+
+.sheet-skilldie{
+    width: 50px;
+    display:inline-block;
+    align-self: right;
+}
+
+.sheet-statmenu{
+    align-self: right;
+}
+
+.sheet-curses-boons{
+    grid-area: bocu;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 2px 2px; 
+    grid-template-areas: 
+        "boon curse";
+}
+
+.sheet-boons{ 
+    grid-area: boon; 
+}
+
+.sheet-curses{ 
+    grid-area: curse; 
+}
+
+.sheet-advantage-disadvantage{ 
+    grid-area: advdi; 
+}
+
+.sheet-backstory{
+    grid-area: backs;
+}
+
+.sheet-character-traits{
+    grid-area: chartr;
+}
+
+.sheet-misc{
+    grid-area: misc;
+}
+
+.sheet-advdisdie{
+    width: 56px;
+}
+
+.sheet-weapons{
+    grid-area: weapons;
+    display: grid;
+    grid-template-columns: 222px 60px 60px 1fr;
+    grid-template-rows: 18px 18px minmax(50px, 1fr);
+    gap: 4px 4px; 
+    grid-template-areas: 
+        "whead whead whead whead"
+        "wc1 wc2 wc3 wc4"
+        "wlist wlist wlist wlist";
+}
+
+.repcontainer,
+.repitem{
+    grid-area: wlist;
+    margin 0
+    border 0
+    padding 0
+    display:contents;
+}
+
+.sheet-repeating_weapons{
+    grid-area: wlist;
+}
+
+.sheet-weapon-head{
+    grid-area: whead;
+}
+
+.sheet-weapon-label-1{
+    grid-area: wc1;
+}
+
+.sheet-weapon-label-2{
+    grid-area: wc2;
+}
+
+.sheet-weapon-label-3{
+    grid-area: wc3;
+}
+
+.sheet-weapon-label-4{
+    grid-area: wc4;
+}
+
+.sheet-weapons-list-holder{
+    grid-area: wlist;
+}
