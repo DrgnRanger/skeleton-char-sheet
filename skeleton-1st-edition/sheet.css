@@ -380,55 +380,55 @@ div.sheet-equipment input{
 }
 
 .sheet-rolltemplate-skeleton .sheet-container {
-  border: 1px solid;
-  /* by default, the border is the same color as the header. You can change this here, e.g. to black */
-  border-color: var(--header-bg-color);
+    border: 1px solid;
+    /* by default, the border is the same color as the header. You can change this here, e.g. to black */
+    border-color: var(--header-bg-color);
 }
 
 /* Header formatting - title and subtitle */
 .sheet-rolltemplate-skeleton .sheet-header {
-  background-color: var(--header-bg-color);
-  /* change text-align to center to center the header text */
-  text-align: left;
-  color: var(--header-text-color);
-  padding: 5px;
+    background-color: var(--header-bg-color);
+    /* change text-align to center to center the header text */
+    text-align: left;
+    color: var(--header-text-color);
+    padding: 5px;
 }
 .sheet-rolltemplate-skeleton .sheet-title {
-  font-size:1.1em;
+    font-size:1.1em;
 }
 .sheet-rolltemplate-skeleton .sheet-subtitle {
-  font-size:.9em;
+    font-size:.9em;
 }
 
 /* example colors */
 .sheet-rolltemplate-skeleton .sheet-container.sheet-color-black{
-  /* this is the default color */
-  --header-bg-color: black;
-  --header-text-color: #FFF;
+    /* this is the default color */
+    --header-bg-color: black;
+    --header-text-color: #FFF;
 }
 
 .sheet-rolltemplate-custom .sheet-container.sheet-color-red {
-  --header-bg-color: #F00;
+    --header-bg-color: #F00;
 }
 
 /* Allprops part */
 .sheet-rolltemplate-skeleton .sheet-content {
-  display: grid;
-  background: #FFF;
-  /* Header formatting - modify the column layout below */
-  grid-template-columns: auto auto;
-  /* Line height to match default roll template */
-  line-height:1.4em;
+    display: grid;
+    background: #FFF;
+    /* Header formatting - modify the column layout below */
+    grid-template-columns: auto auto;
+    /* Line height to match default roll template */
+    line-height:1.4em;
 }
 .sheet-rolltemplate-skeleton .sheet-content > div {
-  padding: 5px;
+    padding: 5px;
 }
 
 /* Left column */
 .sheet-rolltemplate-skeleton .sheet-content .sheet-key {
-  font-weight: bold;
-  padding-right: 10px;
-  text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+    text-align: right;
 }
 
 /* Empty rule, use this if you want to change the right column 
@@ -439,12 +439,29 @@ div.sheet-equipment input{
 /* Make even-numbered rows grey */
 .sheet-rolltemplate-skeleton .sheet-content :nth-child(4n+3),
 .sheet-rolltemplate-skeleton .sheet-content :nth-child(4n) {
-  background:#EEE;
+    background:#EEE;
 }
 
 /* Description field */
 .sheet-rolltemplate-skeleton .sheet-desc {
-  grid-column: span 2;
-  padding: 5px;
-  text-align: center;
+    grid-column: span 2;
+    padding: 5px;
+    text-align: center;
+}
+
+.charsheet button[type=roll].txt-btn {
+    height: 15px;
+    border: 2px solid black;
+    background-color: transparent;
+    margin-left: 5px;
+    padding: 2px 5px 4px 5px;
+    font-size: 0.9em;
+}
+.charsheet button[type=roll].txt-btn:before {
+  content: " ";
+}
+.charsheet button[type=roll].txt-btn:hover {
+  background-color: #c0c0c0;
+  border-radius: 10px;
+  background-position: 0 -28px;
 }
