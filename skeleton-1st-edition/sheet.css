@@ -407,6 +407,9 @@ div.sheet-equipment input{
   --header-text-color: #FFF;
 }
 
+.sheet-rolltemplate-custom .sheet-container.sheet-color-red {
+  --header-bg-color: #F00;
+}
 
 /* Allprops part */
 .sheet-rolltemplate-skeleton .sheet-content {
