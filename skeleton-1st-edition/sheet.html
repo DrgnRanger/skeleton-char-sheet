@@ -1,4 +1,4 @@
-<div class = "sheet-switchtabs sheet-container">
+<div class = "sheet-switchtabs sheet-container-box">
     <button type="action" name="act_character">Character</button>
     <button type="action" name="act_journal">Journal</button>
     <button type="action" name="act_configuration">Configuration</button>
@@ -6,7 +6,7 @@
     
 <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="character" />    
 
-<div class="sheet-thecharacter sheet-container">
+<div class="sheet-thecharacter sheet-container-box">
     <div class="sheet-weapons sheet-block">
         <div class:"sheet-weapon-header">
             <label>Weapons</label>
@@ -62,17 +62,17 @@
             <div class="sheet-attribute-rolls sheet-subblock">
                 <div class="sheet-rolls-row">
                     <div class="sheet-rolls-col"><p style="font-weight: bold;">Ability Check</p></div>
-                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Ability Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_AbilityCheck"></button></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:skeleton} {{title=Ability Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_AbilityCheck"></button></div>
                 </div> 
                 
                 <div class="sheet-rolls-row">    
                     <div class="sheet-rolls-col"><p style="font-weight: bold;">Skill Check</p></div>
-                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Skill Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{actrobatcheck} + @{climbcheck} + @{coercecheck} + @{engineercheck} + @{insightcheck} + @{marksmancheck} + @{martial_artscheck} + @{performancecheck} + @{pilotcheck} + @{rangercheck} + @{sleight_of_handcheck} + @{stealthcheck} + @{swimcheck} + @{treat_injurycheck} + @{throwingcheck} + @{custom_skill_1check} + @{custom_skill_2check} + @{custom_skill_3check} + @{custom_skill_4check} + @{custom_skill_5check} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_SkillCheck"></button></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:skeleton} {{title=Skill Check}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{actrobatcheck} + @{climbcheck} + @{coercecheck} + @{engineercheck} + @{insightcheck} + @{marksmancheck} + @{martial_artscheck} + @{performancecheck} + @{pilotcheck} + @{rangercheck} + @{sleight_of_handcheck} + @{stealthcheck} + @{swimcheck} + @{treat_injurycheck} + @{throwingcheck} + @{custom_skill_1check} + @{custom_skill_2check} + @{custom_skill_3check} + @{custom_skill_4check} + @{custom_skill_5check} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_SkillCheck"></button></div>
                 </div>
             
                 <div class="sheet-rolls-row">
                     <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Initiative</p></div>
-                    <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Initiative}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultInitiative"></button></div>
+                    <div class="sheet-rolls-col"><button type="roll" value="&{template:skeleton} {{title=Default Initiative}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultInitiative"></button></div>
                 </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_dexteritycheck" value="1d@{dexteritycheck}!"/>
+    			    <input type="checkbox" name="attr_dexteritycheck" value="1d@{dexterity}!"/>
     			</span>
         </div>
         
@@ -129,7 +129,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_cunningcheck" value="1d@{cunningcheck}!"/>
+    			    <input type="checkbox" name="attr_cunningcheck" value="1d@{cunning}!"/>
     			</span>
         </div>
         
@@ -157,7 +157,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_willpowercheck" value="1d@{willpowercheck}!"/>
+    			    <input type="checkbox" name="attr_willpowercheck" value="1d@{willpower}!"/>
     			</span>
         </div>
         
@@ -274,12 +274,12 @@
         <div class="sheet-biometric-rolls sheet-subblock">
             <div class="sheet-rolls-row">
                 <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Phys. Soak</p></div>
-                <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Physical Soak}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak"></button></div>
+                <div class="sheet-rolls-col"><button type="roll" value="&{template:skeleton} {{title=Default Physical Soak}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak"></button></div>
             </div>
             
             <div class="sheet-rolls-row">
                 <div class="sheet-rolls-col"><p style="font-weight: bold;">Default Ment. Soak</p></div>
-                <div class="sheet-rolls-col"><button type="roll" value="&{template:default} {{name=Default Mental Soak}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak"></button></div>
+                <div class="sheet-rolls-col"><button type="roll" value="&{template:skeleton} {{title=Default Mental Soak}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak"></button></div>
             </div>
         </div>
     </div>
@@ -436,7 +436,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_martial_artscheck" value="1d@{martial_artscheck}!"/>
+    			    <input type="checkbox" name="attr_martial_artscheck" value="1d@{martial_arts}!"/>
     			</span></div>
 
             </div>
@@ -762,6 +762,23 @@
     <h2>Config/Settings</h2>
     <span>This is a placeholder for possibly more complex things later</span> 
 </div>
+
+<rolltemplate class="sheet-rolltemplate-skeleton">
+  <div class="sheet-container sheet-color-black">
+    <div class="sheet-header">
+      {{#title}}<div class="sheet-title">{{title}}</div>{{/title}}
+      {{#subtitle}}<div class="sheet-subtitle">{{subtitle}}</div>{{/subtitle}}
+    </div>
+    
+    <div class="sheet-content">
+      {{#allprops() title subtitle desc color}}
+      <div class="sheet-key">{{key}}</div>
+      <div class="sheet-value">{{value}}</div>
+      {{/allprops() title subtitle desc color}}
+      {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}}
+    </div>
+  </div>
+</rolltemplate>
 
 <script type="text/worker">
     const buttonlist = ["character","journal","configuration"];
