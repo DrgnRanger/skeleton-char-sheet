@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Castoro&display=swap');
 
+/*Makes font family for each thing Castoro, with Ariel as a backup*/
 span{
     font-family: 'Castoro', Arial;
 }
@@ -8,6 +9,7 @@ p{
     font-family: 'Castoro', Arial;
 }
 
+/*Confiurations for the tabs on the sheet*/
 .sheet-thecharacter,
 .sheet-config,
 .sheet-journal{
@@ -20,6 +22,7 @@ p{
     display: grid;
 }
 
+/*Other tabs configuration for sheet*/
 .sheet-journal{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -33,6 +36,7 @@ p{
     grid-template-rows: 1fr;
 }
 
+/*Lagre grid confiuration*/
 .sheet-thecharacter{
     width: 842px;
     grid-template-columns: 180px 180px 474px;
@@ -157,7 +161,7 @@ p{
     grid-area: luck;
 }
 
-
+/*Biometrics sheet configuration*/
 .sheet-biometrics{ 
     grid-area: biom;
     display: grid;
@@ -200,6 +204,7 @@ p{
     grid-area: biorolls;
 }
 
+/*Columns and rows for the rolls flexgrid*/
 .sheet-rolls-col{
     display: flex;
     flex-direction: column;
@@ -226,7 +231,7 @@ p{
         "wealprop addit";
 }
 
-div.sheet-equipment{ 
+.sheet-equipment{ 
     grid-area: equip;
     display: grid;
     grid-template-columns: min-content min-content;
@@ -237,11 +242,11 @@ div.sheet-equipment{
     grid-area: equiphead;
 }
 
-div.sheet-equipment label{
+.sheet-equipment label{
     text-align: center;
 }
 
-div.sheet-equipment input{
+.sheet-equipment input{
     width: 180px;
 }
 
@@ -268,6 +273,7 @@ div.sheet-equipment input{
     grid-area: shead;
 }
 
+/*Flex grid for skills section*/
 .sheet-skills-column{
     display: flex;
     flex-direction: column;
@@ -374,7 +380,7 @@ input.sheet-weapon-list{
     grid-area: whead;
 }
 
-/* Smaller margins - remove these if you want the huge default left margin */
+/*Add negative width to either for smaller margins*/
 .sheet-rolltemplate-skeleton{
 
 }
@@ -384,14 +390,14 @@ input.sheet-weapon-list{
 
 .sheet-rolltemplate-skeleton .sheet-container {
     border: 1px solid;
-    /* by default, the border is the same color as the header. You can change this here, e.g. to black */
+    /*Border can be changed to something else from header color here */
     border-color: var(--header-bg-color);
 }
 
-/* Header formatting - title and subtitle */
+/*Header formatting - title and subtitle*/
 .sheet-rolltemplate-skeleton .sheet-header {
     background-color: var(--header-bg-color);
-    /* change text-align to center to center the header text */
+    /*Change text-align to center to center the header text*/
     text-align: left;
     color: var(--header-text-color);
     padding: 5px;
@@ -403,9 +409,8 @@ input.sheet-weapon-list{
     font-size:.9em;
 }
 
-/* example colors */
+/*Black color for roll template, red color can be seen below*/
 .sheet-rolltemplate-skeleton .sheet-container.sheet-color-black{
-    /* this is the default color */
     --header-bg-color: black;
     --header-text-color: #FFF;
 }
@@ -414,44 +419,45 @@ input.sheet-weapon-list{
     --header-bg-color: #F00;
 }
 
-/* Allprops part */
+/*Allprops part*/
 .sheet-rolltemplate-skeleton .sheet-content{
     display: grid;
     background: #FFF;
-    /* Header formatting - modify the column layout below */
+    /*Header formatting - modify the column layout below*/
     grid-template-columns: auto auto;
-    /* Line height to match default roll template */
+    /*Line height to match default roll template*/
     line-height:1.4em;
 }
 .sheet-rolltemplate-skeleton .sheet-content > div{
     padding: 5px;
 }
 
-/* Left column */
+/*Left column*/
 .sheet-rolltemplate-skeleton .sheet-content .sheet-key{
     font-weight: bold;
     padding-right: 10px;
     text-align: right;
 }
 
-/* Empty rule, use this if you want to change the right column 
-.sheet-rolltemplate-skeleton .sheet-value {
+/*Empty rule, use this if you want to change the right column 
+.sheet-rolltemplate-skeleton .sheet-value{
 }
 */
 
-/* Make even-numbered rows grey */
+/*Make even-numbered rows grey*/
 .sheet-rolltemplate-skeleton .sheet-content :nth-child(4n+3),
 .sheet-rolltemplate-skeleton .sheet-content :nth-child(4n){
     background:#EEE;
 }
 
-/* Description field */
+/*Description field*/
 .sheet-rolltemplate-skeleton .sheet-desc{
     grid-column: span 2;
     padding: 5px;
     text-align: center;
 }
 
+/*Edits button to be more stylish and add text, uses a template of the starate sheet buttons with cusomization*/ 
 .charsheet button[type=roll].txt-btn{
     height: 15px;
     border: 2px solid black;
@@ -460,9 +466,11 @@ input.sheet-weapon-list{
     padding: 2px 5px 4px 5px;
     font-size: 0.9em;
 }
+
 .charsheet button[type=roll].txt-btn:before{
   content: " ";
 }
+
 .charsheet button[type=roll].txt-btn:hover{
   background-color: #c0c0c0;
   border-radius: 10px;
