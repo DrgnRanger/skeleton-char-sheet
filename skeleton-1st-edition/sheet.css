@@ -359,12 +359,15 @@ div.sheet-equipment input{
 
 .sheet-weapon-content{
     display: grid;
-    grid-template-columns: 222px 60px 60px 1fr;
-
+    grid-template-columns: 219px 56px 106px 59px 66px 66px 1fr;
 }
 
 .sheet-repeating_weapons{
     grid-area: wlist;
+}
+
+input.sheet-weapon-list{
+    height: 10px;
 }
 
 .sheet-weapon-head{
@@ -393,10 +396,10 @@ div.sheet-equipment input{
     color: var(--header-text-color);
     padding: 5px;
 }
-.sheet-rolltemplate-skeleton .sheet-title {
+.sheet-rolltemplate-skeleton .sheet-title{
     font-size:1.1em;
 }
-.sheet-rolltemplate-skeleton .sheet-subtitle {
+.sheet-rolltemplate-skeleton .sheet-subtitle{
     font-size:.9em;
 }
 
@@ -407,12 +410,12 @@ div.sheet-equipment input{
     --header-text-color: #FFF;
 }
 
-.sheet-rolltemplate-custom .sheet-container.sheet-color-red {
+.sheet-rolltemplate-custom .sheet-container.sheet-color-red{
     --header-bg-color: #F00;
 }
 
 /* Allprops part */
-.sheet-rolltemplate-skeleton .sheet-content {
+.sheet-rolltemplate-skeleton .sheet-content{
     display: grid;
     background: #FFF;
     /* Header formatting - modify the column layout below */
@@ -420,12 +423,12 @@ div.sheet-equipment input{
     /* Line height to match default roll template */
     line-height:1.4em;
 }
-.sheet-rolltemplate-skeleton .sheet-content > div {
+.sheet-rolltemplate-skeleton .sheet-content > div{
     padding: 5px;
 }
 
 /* Left column */
-.sheet-rolltemplate-skeleton .sheet-content .sheet-key {
+.sheet-rolltemplate-skeleton .sheet-content .sheet-key{
     font-weight: bold;
     padding-right: 10px;
     text-align: right;
@@ -438,18 +441,18 @@ div.sheet-equipment input{
 
 /* Make even-numbered rows grey */
 .sheet-rolltemplate-skeleton .sheet-content :nth-child(4n+3),
-.sheet-rolltemplate-skeleton .sheet-content :nth-child(4n) {
+.sheet-rolltemplate-skeleton .sheet-content :nth-child(4n){
     background:#EEE;
 }
 
 /* Description field */
-.sheet-rolltemplate-skeleton .sheet-desc {
+.sheet-rolltemplate-skeleton .sheet-desc{
     grid-column: span 2;
     padding: 5px;
     text-align: center;
 }
 
-.charsheet button[type=roll].txt-btn {
+.charsheet button[type=roll].txt-btn{
     height: 15px;
     border: 2px solid black;
     background-color: transparent;
@@ -457,10 +460,10 @@ div.sheet-equipment input{
     padding: 2px 5px 4px 5px;
     font-size: 0.9em;
 }
-.charsheet button[type=roll].txt-btn:before {
+.charsheet button[type=roll].txt-btn:before{
   content: " ";
 }
-.charsheet button[type=roll].txt-btn:hover {
+.charsheet button[type=roll].txt-btn:hover{
   background-color: #c0c0c0;
   border-radius: 10px;
   background-position: 0 -28px;
