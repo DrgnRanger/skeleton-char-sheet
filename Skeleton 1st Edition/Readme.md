@@ -10,4 +10,4 @@ Made by DrgnRanger
 * buttons for rolls added in
 
 **v0.9 (07-02-2021)**
-* the initial creation of the character sheet*
+* the initial creation of the character sheet
