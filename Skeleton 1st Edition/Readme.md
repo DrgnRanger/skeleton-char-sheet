@@ -1,6 +1,7 @@
 ## Character Sheet for Skeleton 1st Edition 
 Made by DrgnRanger
 
+### Changelog
 **v1.0 (07-02-2021)**
 * customized buttons
 * added rolls for weapons
