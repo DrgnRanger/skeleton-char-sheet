@@ -365,7 +365,7 @@ p{
 
 .sheet-weapon-content{
     display: grid;
-    grid-template-columns: 219px 56px 106px 59px 66px 66px 1fr;
+    grid-template-columns: 219px 56px 106px 59px 66px 66px 46px 1fr;
 }
 
 .sheet-repeating_weapons{
