@@ -24,6 +24,7 @@
             <div style="visibility: hidden;">Roll</div>
             <span>Range</span>
             <span>Ammo</span>
+            <span>Size</span>
             <span>Notes</span>
         </div>
         
@@ -65,6 +66,11 @@
     			    <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px;" name="roll_DefaultInitiative">Attack</button>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" style="width: 60px; height: 28px;"/>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_ammo" style="width: 60px; height: 28px;"/>
+                    <select name="attr_weapon_size" title="@{weapon_size}" class="sheet-weaponsize" style="width: 46px;" value="1">
+                        <option value="0">S</option>
+    				    <option value="1">M</option>
+    				    <option value="2">L</option>
+    			    </select>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 200px; height: 28px;"/>
                 </div>
             </fieldset>
