@@ -2,13 +2,16 @@
 Made by DrgnRanger
 
 ### Changelog
-**v1.0 (07-02-2021)**
+**v1.01 (07-05-2021)**
+* added sizes for weapons
+
+**v1.00 (07-03-2021)**
 * customized buttons
 * added rolls for weapons
 * added rolls for armor soaks
 
-**v1.0 (07-02-2021)**
+**v1.00 (07-03-2021)**
 * buttons for rolls added in
 
-**v0.9 (07-02-2021)**
+**v0.90 (07-02-2021)**
 * the initial creation of the character sheet
