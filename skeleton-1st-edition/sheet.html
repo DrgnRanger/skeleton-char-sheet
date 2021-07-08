@@ -1,35 +1,124 @@
+<!--Tabs for switching between parts of the sheet-->
 <div class = "sheet-switchtabs sheet-container-box">
     <button type="action" name="act_character">Character</button>
     <button type="action" name="act_journal">Journal</button>
     <button type="action" name="act_configuration">Configuration</button>
 </div>
-    
+
+<!--Button for toggling tabs-->
 <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="character" />    
 
+<!--Character sheet-->
 <div class="sheet-thecharacter sheet-container-box">
+    <!--Grid for weapons-->
     <div class="sheet-weapons sheet-block">
         <div class:"sheet-weapon-header">
             <label>Weapons</label>
         </div>
-
+        
+        
+        
+        <!--Title for table-->
         <div class="sheet-weapon-content">
             <span>Name</span>
             <span>Damage</span>
+            <span>Ability</span>
+            <div style="visibility: hidden;">Roll</div>
             <span>Range</span>
+            <span>Ammo</span>
+            <span>Size</span>
             <span>Notes</span>
         </div>
- 
+        
+        <div class="sheet-weapon-content">
+            <input class="sheet-input-center-aligned" type="text" name="attr_unarmed_weapon" title="@{unarmed}" value="Unarmed" disabled="true" style="width: 200px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" name="attr_unarmed_damage" title="@{unarmed_damage}" value="1d6" placeholder="1d6" style="width: 50px; height: 28px;"/>
+            <!--There is no way (yet) to allow the options to be variable, so the custom skills are put as generic names, this could be changed to a "select-like" thing using radio inputs and labels at some point-->
+            <select name="attr_unarmed_attack_ability" title="@{unarmed_attack_ability}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                <option value="1d0">None</option>
+    		    <option value="1d@{agility}!">Agility</option>
+    		    <option value="1d@{charisma}!">Charisma</option>
+    		    <option value="1d@{dexterity}!">Dexterity</option>
+    		    <option value="1d@{constitution}!">Constitution</option>
+    		    <option value="1d@{willpower}!">Willpower</option>
+    		    <option value="1d@{strength}!">Strength</option>
+			    <option value="1d@{luck}!">Luck</option>
+    		    <option value="1d@{acrobat}!">Acrobat</option>
+    		    <option value="1d@{climb}!">Climb</option>
+    		    <option value="1d@{coerce}!">Coerce</option>
+    		    <option value="1d@{engineer}!">Engineer</option>
+    		    <option value="1d@{insight}!">Insight</option>
+    		    <option value="1d@{martial_arts}!">Martial Arts</option>
+    		    <option value="1d@{performance}!">Performance</option>
+    		    <option value="1d@{pilot}!">Pilot</option>
+    		    <option value="1d@{ranger}!">Ranger</option>
+    		    <option value="1d@{sleight_of_hand}!">Sleight of Hand</option>
+    		    <option value="1d@{stealth}!">Stealth</option>
+    		    <option value="1d@{swim}!">Swim</option>
+    		    <option value="1d@{treat_injury}!">Treat Injury</option>
+    		    <option value="1d@{throwing}!">Throwing</option>
+    		    <option value="1d@{custom_skill_1}!">Custom Skill 1</option>
+    		    <option value="1d@{custom_skill_2}!">Custom Skill 2</option>
+    		    <option value="1d@{custom_skill_3}!">Custom Skill 3</option>
+    		    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
+    		    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
+            </select>
+            <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Unarmed Attack}} {{subtitle=@{character_name}}} {{Result=[[@{unarmed_damage}! + @{unarmed_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_UnarmedAttack">Attack</button>
+            <input class="sheet-input-center-aligned" type="text" value="Melee" name="attr_unarmed_range" disabled="true" style="width: 85px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_ammo" disabled="true" style="width: 45px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_size" disabled="true" style="width: 46px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="" name="attr_unarmed_notes" style="width: 210px; height: 28px;"/>
+        </div>
+        
+        <!--Repeating fieldset for adding weapons to sheet, ensure this and the above titles match number of elements-->
             <fieldset class="repeating_weapons">
                 <div class="sheet-weapon-content">
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" placeholder="Weapon Name" style="width: 213px;"/>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" style="width: 50px;"/>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" style="width: 50px;"/>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 350px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" title="@{weapon_name}" placeholder="Weapon Name" style="width: 200px; height: 28px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" title="@{weapon_damage}" placeholder="1d4" style="width: 50px; height: 28px;"/>
+                    <!--Same as above, there is no way (yet) to allow the options to be variable, so the custom skills are put as generic names, this could be changed to a "select-like" thing using radio inputs and labels at some point-->
+                    <select name="attr_weapon_attack_ability" title="@{weapon_attack_ability}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                        <option value="1d0">None</option>
+    				    <option value="1d@{agility}!">Agility</option>
+    				    <option value="1d@{charisma}!">Charisma</option>
+    				    <option value="1d@{dexterity}!">Dexterity</option>
+    				    <option value="1d@{constitution}!">Constitution</option>
+    				    <option value="1d@{willpower}!">Willpower</option>
+    				    <option value="1d@{strength}!">Strength</option>
+    				    <option value="1d@{luck}!">Luck</option>
+    				    <option value="1d@{acrobat}!">Acrobat</option>
+    				    <option value="1d@{climb}!">Climb</option>
+    				    <option value="1d@{coerce}!">Coerce</option>
+    				    <option value="1d@{engineer}!">Engineer</option>
+    				    <option value="1d@{insight}!">Insight</option>
+    				    <option value="1d@{martial_arts}!">Martial Arts</option>
+    				    <option value="1d@{performance}!">Performance</option>
+    				    <option value="1d@{pilot}!">Pilot</option>
+    				    <option value="1d@{ranger}!">Ranger</option>
+    				    <option value="1d@{sleight_of_hand}!">Sleight of Hand</option>
+    				    <option value="1d@{stealth}!">Stealth</option>
+    				    <option value="1d@{swim}!">Swim</option>
+    				    <option value="1d@{treat_injury}!">Treat Injury</option>
+    				    <option value="1d@{throwing}!">Throwing</option>
+    				    <option value="1d@{custom_skill_1}!">Custom Skill 1</option>
+    				    <option value="1d@{custom_skill_2}!">Custom Skill 2</option>
+    				    <option value="1d@{custom_skill_3}!">Custom Skill 3</option>
+    				    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
+    				    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
+    			    </select>
+    			    <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_DefaultAttack">Attack</button>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" placeholder="15/30/45" style="width: 85px; height: 28px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_ammo" style="width: 45px; height: 28px;"/>
+                    <select name="attr_weapon_size" title="@{weapon_size}" class="sheet-weaponsize" style="width: 46px;" value="1">
+                        <option value="0">S</option>
+    				    <option value="1">M</option>
+    				    <option value="2">L</option>
+    			    </select>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 210px; height: 28px;"/>
                 </div>
             </fieldset>
-        <div class="sheet-empty-space"></div>
     </div>
     
+    <!--Picture used next to character information-->
     <div class="sheet-skeleton-face">
         <img src="https://raw.githubusercontent.com/DrgnRanger/skeleton-char-sheet/6cff6980d6882bcec098bab1279863318de84150/skeleton-1st-edition/narrowhouse-skull.svg" style="max-height: 130px;"/>
     </div>
@@ -40,6 +129,7 @@
             <div class="sheet-cha-name">
                 <div><span>Name</span></div>
                 
+                <!--Can change @{character_name} to ensure name not automatically pulled from roll20-->
                 <div><span>
                     <input type="text" name="attr_character_name" title="@{character_name}" style="width: 240px;"/>
                 </span></div>
@@ -55,6 +145,7 @@
         </div>
     </div>
 
+    <!--Note that these role templates are very long due to the nature of selecting what to roll, so more than the usual two dice (without advantage) can be selected and can make for a dud roll-->
     <div class="sheet-stats sheet-block">
         <div class="sheet-smstatistics">
             <h3>Attributes</h3>
@@ -71,8 +162,8 @@
                 <div class="sheet-rolls-row">
                     <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Default Initiative}} {{subtitle= @{character_name}}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultInitiative">Default Initiative</button></div>
                 </div>
+            </div>
         </div>
-    </div>
         
         <div class="sheet-agi sheet-subblock">
             <label>Agi</label>
@@ -185,13 +276,15 @@
     			    <input type="checkbox" name="attr_luckcheck" value="1d@{luck}!"/>
     			</span>
         </div>
+        <!--Some empty space left here that could probably fill something at some point-->
     </div>
     
     <div class="sheet-biometrics sheet-block">
         <div class="sheet-biom">
-            <label>Biometrics</label>
+            <h3>Biometrics</h3>
         </div>
         
+        <!--These totals for each value are automatically calculated from the attributes input in selection tables-->
         <div class="sheet-inj sheet-subblock">
             <label>Injuries</label>
             <div class="sheet-ment sheet-substat">
@@ -219,10 +312,40 @@
             </div>
         </div>
         
+        <!--Uses the same select box as the weapon table above-->
         <div class="sheet-arm sheet-subblock">
             <label>Armor</label>
             <span style="font-size: 12px;">Soak</span>
-            <input type="text" name="attr_armor" title="@{armor}" class = "sheet-biomenu">
+            <input type="text" name="attr_armor" title="@{armor}" class = "sheet-biomenu" placeholder="1d6">
+            <select name="attr_armor_soak_ability" title="@{armor_soak_ability}" class="sheet-armor-soakdie" style="width: 60px;" value="None">
+                <option value="1d0">None</option>
+    			<option value="1d@{agility}!">Agility</option>
+    			<option value="1d@{charisma}!">Charisma</option>
+    			<option value="1d@{dexterity}!">Dexterity</option>
+    			<option value="1d@{constitution}!">Constitution</option>
+    			<option value="1d@{willpower}!">Willpower</option>
+    		    <option value="1d@{strength}!">Strength</option>
+    			<option value="1d@{luck}!">Luck</option>
+    			<option value="1d@{acrobat}!">Acrobat</option>
+    			<option value="1d@{climb}!">Climb</option>
+    			<option value="1d@{coerce}!">Coerce</option>
+    			<option value="1d@{engineer}!">Engineer</option>
+    			<option value="1d@{insight}!">Insight</option>
+    			<option value="1d@{martial_arts}!">Martial Arts</option>
+    			<option value="1d@{performance}!">Performance</option>
+    			<option value="1d@{pilot}!">Pilot</option>
+    			<option value="1d@{ranger}!">Ranger</option>
+    			<option value="1d@{sleight_of_hand}!">Sleight of Hand</option>
+    			<option value="1d@{stealth}!">Stealth</option>
+    			<option value="1d@{swim}!">Swim</option>
+    			<option value="1d@{treat_injury}!">Treat Injury</option>
+    			<option value="1d@{throwing}!">Throwing</option>
+    			<option value="1d@{custom_skill_1}!">Custom Skill 1</option>
+    			<option value="1d@{custom_skill_2}!">Custom Skill 2</option>
+    			<option value="1d@{custom_skill_3}!">Custom Skill 3</option>
+    			<option value="1d@{custom_skill_4}!">Custom Skill 4</option>
+    			<option value="1d@{custom_skill_5}!">Custom Skill 5</option>
+    		</select>
         </div>
         
         <div class="sheet-cond sheet-subblock">
@@ -253,6 +376,7 @@
             </div>
         </div>
         
+        <!--These are not automatically calculated as the number is variable due to boons and curses that one can recieve-->
         <div class="sheet-movement sheet-subblock">
             <label>Movement</label>
                 <div class="subcontainer" style="height: min-content; width: 70px;">
@@ -262,26 +386,32 @@
                     </div>
                     
                     <div class = "bottom">
-                        <span style="font-size: 12px;">Run</span>
+                        <span style="font-size: 12px;">Swim</span>
                         <input type="number" name="attr_walking_movement" title="@{walking_movement}" class="sheet-biomenu">
                     </div>
                 </div>
         </div>
         
+        <!--These are the usual rolls for soak, and armor value can be customized from the sheet using specific dice and an ability if necessary-->
         <div class="sheet-biometric-rolls sheet-subblock">
             <div class="sheet-rolls-row">
-                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Default Physical Soak}} {{subtitle= @{character_name}}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak">Default Phys. Soak</button></div>
+                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Default Physical Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak">Default Phys. Soak</button></div>
             </div>
             
             <div class="sheet-rolls-row">
-                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Default Mental Soak}} {{subtitle= @{character_name}}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Default Ment. Soak</button></div>
+                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Default Mental Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Default Ment. Soak</button></div>
+            </div>
+            
+            <div class="sheet-rolls-row">
+                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Armor Soak}} {{subtitle=@{character_name}}} {{Soak=[[@{armor}! + @{armor_soak_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Armor Soak</button></div>
             </div>
         </div>
     </div>
    
+    <!--Items and equipment paragraphs, the equipment block could be improved through customization of the input boxes, the other large slot is greyed out due to needing a boon to equip something there-->
     <div class="sheet-items-equipment sheet-block">
         <div class = sheet-equiphead>
-            <label>Equipment</label>
+            <h3>Equipment</h3>
         </div>
             
         <div class="sheet-equipment sheet-subblock">
@@ -308,7 +438,7 @@
             <label>Additional Items</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 520px; max-height: 520px; max-width: 210px;; "></textarea>
+                    <textarea name="" style="min-height: 50px; height: 494px; max-height: 494px; max-width: 210px;; "></textarea>
                 </div>
             </div>
         </div>
@@ -317,12 +447,13 @@
             <label>Wealth and Property</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 300px; max-height: 300px; max-width: 210px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 274px; max-height: 274px; max-width: 210px;"></textarea>
                 </div>
             </div>
         </div>
     </div>
     
+    <!--Large skill section, the next step would be to add the ability to expand these skills for more customization, although five custom skills is usally enough-->
     <div class="sheet-skills sheet-block">
         <div class="sheet-skills-head">
             <label>Skills</label>
@@ -562,7 +693,7 @@
         <div class="sheet-skills-label-4">
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_1_name" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_1_name" style="width: 100px; " name="@{custom_skill_1_name}" placeholder="Custom Skill 1"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_1" title="@{custom_skill_1}" class="sheet-skilldie" value="4">
@@ -579,7 +710,7 @@
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_2_name" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_2_name" style="width: 100px;" name="@{custom_skill_2_name}" placeholder="Custom Skill 2"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_2" title="@{custom_skill_2}" class="sheet-skilldie" value="4">
@@ -596,7 +727,7 @@
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_3_name" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_3_name" style="width: 100px;" name="@{custom_skill_3_name}" placeholder="Custom Skill 3"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_3" title="@{custom_skill_3}" class="sheet-skilldie" value="4">
@@ -613,7 +744,7 @@
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_4_name" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_4_name" style="width: 100px;" name="@{custom_skill_4_name}" placeholder="Custom Skill 4"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_4" title="@{custom_skill_4}" class="sheet-skilldie" value="4">
@@ -630,7 +761,7 @@
             
             <div class="sheet-skill sheet-skill-row">
                 <div class="sheet-skills-column"> 
-                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_5_name" style="width: 100px;"/>
+                    <input class="sheet-input-center-aligned" type="text" name="attr_custom_skill_5_name" style="width: 100px;" name="@{custom_skill_5_name}" placeholder="Custom Skill 5"/>
                 </div>
                 
                 <div class="sheet-skills-column"><span><select name="attr_custom_skill_5" title="@{custom_skill_5}" class="sheet-skilldie" value="4">
@@ -647,6 +778,7 @@
         </div>
     </div>
     
+    <!--Boons and curses section, quite simple-->
     <div class="sheet-curses-boons sheet-block">
         <div class="sheet-boons sheet-block">
             <label>Boons</label>
@@ -667,6 +799,7 @@
         </div>
     </div>
     
+    <!--Avantage or disadvantage, with an extra dice in case there is a need for more generic dice to be rolled and tracked on the sheet (usually these don't go above a d12, but they could go up to a d12 + d4, or they could be used to add to a skill with a d12 + d4 modifier)-->
     <div class="sheet-advantage-disadvantage sheet-block">
         <label>Advantage and Disadvatage</label>
         <span>Advantage</span>
@@ -724,12 +857,13 @@
     </div>
 </div>
 
+<!--Next tab of the character sheet, the journal and other misc. boxes for writing things down-->
 <div class="sheet-journal">
     <div class="sheet-backstory sheet-block">
         <label>Backstory</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 50px; width: 415px; max-width: 415px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 50px; width: 406px; max-width: 406px; min-width: 406px;"></textarea>
                 </div>
             </div>
     </div>
@@ -738,7 +872,7 @@
         <label>Character Traits</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 50px; width: 409px; max-width: 409px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 50px; width: 406px; max-width: 406px; min-width: 406px;"></textarea>
                 </div>
             </div>
     </div>
@@ -747,34 +881,37 @@
         <label>Misc. Stuff</label>
             <div class="textbox">
                 <div class="options">
-                    <textarea name="" style="min-height: 50px; height: 50px; width: 830px; max-width: 830px;"></textarea>
+                    <textarea name="" style="min-height: 50px; height: 50px; width: 830px; max-width: 830px; min-width: 830px;"></textarea>
                 </div>
             </div>
     </div>
 </div>
 
+<!--Placeholder page in case there are mroe complex things to add to the sheet-->
 <div class="sheet-config">
     <h2>Config/Settings</h2>
     <span>This is a placeholder for possibly more complex things later</span> 
 </div>
 
+<!--Custom roll table for this sheet, uses Jakob's Better Default Rolltemplate with some customization-->
 <rolltemplate class="sheet-rolltemplate-skeleton">
-  <div class="sheet-container sheet-color-{{color}}">
-    <div class="sheet-header">
-      {{#title}}<div class="sheet-title">{{title}}</div>{{/title}}
-      {{#subtitle}}<div class="sheet-subtitle">{{subtitle}}</div>{{/subtitle}}
+    <div class="sheet-container sheet-color-{{color}}">
+        <div class="sheet-header">
+            {{#title}}<div class="sheet-title">{{title}}</div>{{/title}}
+            {{#subtitle}}<div class="sheet-subtitle">{{subtitle}}</div>{{/subtitle}}
+        </div>
+        
+        <div class="sheet-content">
+            {{#allprops() title subtitle desc color}}
+        <div class="sheet-key">{{key}}</div>
+        <div class="sheet-value">{{value}}</div>
+            {{/allprops() title subtitle desc color}}
+            {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}}
+        </div>
     </div>
-    
-    <div class="sheet-content">
-      {{#allprops() title subtitle desc color}}
-      <div class="sheet-key">{{key}}</div>
-      <div class="sheet-value">{{value}}</div>
-      {{/allprops() title subtitle desc color}}
-      {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}}
-    </div>
-  </div>
 </rolltemplate>
 
+<!--Text worker for changing tabs on the sheet-->
 <script type="text/worker">
     const buttonlist = ["character","journal","configuration"];
     buttonlist.forEach(button => {
