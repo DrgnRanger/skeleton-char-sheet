@@ -304,7 +304,7 @@
                     <div class="subcontainer" style="height: min-content; width: 70px;">
                         <div class="top">
                             <span style="font-size: 12px;">Current</span>
-                            <input type="number" name="attr_physical_injuries" title="@{physical_injuries}" class = "sheet-biomenu">
+                            <input type="number" name="attr_physical_injuries" title="@{physical_injuries}" class = "sheet-biomenu"  min = "0">
                         </div>
                             <span style="font-size: 12px;">Total</span>
                             <input type="number" name="attr_physical_injuries_max" title="@{physical_injuries_max}" class = "sheet-biomenu" disabled="true" value="(@{constitution})/2">
@@ -356,7 +356,7 @@
                     <div class="subcontainer" style="height: min-content; width: 70px;">
                         <div class="top">
                             <span style="font-size: 12px;">Current</span>
-                            <input type="number" name="attr_exhaustion" title="@{exhaustion}" class="sheet-biomenu">
+                            <input type="number" name="attr_exhaustion" title="@{exhaustion}" class="sheet-biomenu" min = "0">
                         </div>
                             <span style="font-size: 12px;">Total</span>
                             <input type="number" name="attr_exhaustion_max" title="@{exhaustion_max}" class="sheet-biomenu" disabled="true" value="(@{physical_injuries_max}) + (@{mental_injuries_max})">
@@ -368,7 +368,7 @@
                     <div class="subcontainer" style="height: min-content; width: 70px;">
                         <div class="top">
                             <span style="font-size: 12px;">Current</span>
-                            <input type="number" name="attr_blood_points" title="@{blood_points}" class="sheet-biomenu">
+                            <input type="number" name="attr_blood_points" title="@{blood_points}" class="sheet-biomenu" min = "0">
                         </div>
                             <span style="font-size: 12px;">Total</span>
                             <input type="number" name="attr_blood_points_max" title="@{blood_points_max}" class="sheet-biomenu" disabled="true" value="@{constitution}">
@@ -382,12 +382,12 @@
                 <div class="subcontainer" style="height: min-content; width: 70px;">
                     <div class="top">
                         <span style="font-size: 12px;">Walk</span>
-                        <input type="number" name="attr_running_movement" title="@{running_movement}" class="sheet-biomenu">
+                        <input type="number" name="attr_running_movement" title="@{running_movement}" class="sheet-biomenu" min = "0">
                     </div>
                     
                     <div class = "bottom">
                         <span style="font-size: 12px;">Swim</span>
-                        <input type="number" name="attr_walking_movement" title="@{walking_movement}" class="sheet-biomenu">
+                        <input type="number" name="attr_walking_movement" title="@{walking_movement}" class="sheet-biomenu" min = "0">
                     </div>
                 </div>
         </div>
