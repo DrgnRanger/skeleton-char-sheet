@@ -16,6 +16,8 @@
             <label>Weapons</label>
         </div>
         
+        
+        
         <!--Title for table-->
         <div class="sheet-weapon-content">
             <span>Name</span>
@@ -28,12 +30,52 @@
             <span>Notes</span>
         </div>
         
+        <div class="sheet-weapon-content">
+            <input class="sheet-input-center-aligned" type="text" name="attr_unarmed_weapon" title="@{unarmed}" value="Unarmed" disabled="true" style="width: 200px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" name="attr_unarmed_damage" title="@{unarmed_damage}" value="1d6" placeholder="1d6" style="width: 50px; height: 28px;"/>
+            <!--There is no way (yet) to allow the options to be variable, so the custom skills are put as generic names, this could be changed to a "select-like" thing using radio inputs and labels at some point-->
+            <select name="attr_unarmed_attack_ability" title="@{unarmed_attack_ability}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                <option value="1d0">None</option>
+    		    <option value="1d@{agility}!">Agility</option>
+    		    <option value="1d@{charisma}!">Charisma</option>
+    		    <option value="1d@{dexterity}!">Dexterity</option>
+    		    <option value="1d@{constitution}!">Constitution</option>
+    		    <option value="1d@{willpower}!">Willpower</option>
+    		    <option value="1d@{strength}!">Strength</option>
+			    <option value="1d@{luck}!">Luck</option>
+    		    <option value="1d@{acrobat}!">Acrobat</option>
+    		    <option value="1d@{climb}!">Climb</option>
+    		    <option value="1d@{coerce}!">Coerce</option>
+    		    <option value="1d@{engineer}!">Engineer</option>
+    		    <option value="1d@{insight}!">Insight</option>
+    		    <option value="1d@{martial_arts}!">Martial Arts</option>
+    		    <option value="1d@{performance}!">Performance</option>
+    		    <option value="1d@{pilot}!">Pilot</option>
+    		    <option value="1d@{ranger}!">Ranger</option>
+    		    <option value="1d@{sleight_of_hand}!">Sleight of Hand</option>
+    		    <option value="1d@{stealth}!">Stealth</option>
+    		    <option value="1d@{swim}!">Swim</option>
+    		    <option value="1d@{treat_injury}!">Treat Injury</option>
+    		    <option value="1d@{throwing}!">Throwing</option>
+    		    <option value="1d@{custom_skill_1}!">Custom Skill 1</option>
+    		    <option value="1d@{custom_skill_2}!">Custom Skill 2</option>
+    		    <option value="1d@{custom_skill_3}!">Custom Skill 3</option>
+    		    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
+    		    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
+            </select>
+            <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Unarmed Attack}} {{subtitle=@{character_name}}} {{Result=[[@{unarmed_damage}! + @{unarmed_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_UnarmedAttack">Attack</button>
+            <input class="sheet-input-center-aligned" type="text" value="Melee" name="attr_unarmed_range" disabled="true" style="width: 85px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_ammo" disabled="true" style="width: 45px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_size" disabled="true" style="width: 46px; height: 28px;"/>
+            <input class="sheet-input-center-aligned" type="text" value="" name="attr_unarmed_notes" style="width: 210px; height: 28px;"/>
+        </div>
+        
         <!--Repeating fieldset for adding weapons to sheet, ensure this and the above titles match number of elements-->
             <fieldset class="repeating_weapons">
                 <div class="sheet-weapon-content">
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" title="@{weapon_name}" placeholder="Weapon Name" style="width: 213px; height: 28px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_name" title="@{weapon_name}" placeholder="Weapon Name" style="width: 200px; height: 28px;"/>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_damage" title="@{weapon_damage}" placeholder="1d4" style="width: 50px; height: 28px;"/>
-                    <!--There is no way (yet) to allow the options to be variable, so the custom skills are put as generic names, this could be changed to a "select-like" thing using radio inputs and labels at some point-->
+                    <!--Same as above, there is no way (yet) to allow the options to be variable, so the custom skills are put as generic names, this could be changed to a "select-like" thing using radio inputs and labels at some point-->
                     <select name="attr_weapon_attack_ability" title="@{weapon_attack_ability}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
                         <option value="1d0">None</option>
     				    <option value="1d@{agility}!">Agility</option>
@@ -63,15 +105,15 @@
     				    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
     				    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
     			    </select>
-    			    <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px;" name="roll_DefaultInitiative">Attack</button>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" style="width: 60px; height: 28px;"/>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_ammo" style="width: 60px; height: 28px;"/>
+    			    <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_DefaultAttack">Attack</button>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" placeholder="15/30/45" style="width: 85px; height: 28px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_ammo" style="width: 45px; height: 28px;"/>
                     <select name="attr_weapon_size" title="@{weapon_size}" class="sheet-weaponsize" style="width: 46px;" value="1">
                         <option value="0">S</option>
     				    <option value="1">M</option>
     				    <option value="2">L</option>
     			    </select>
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 200px; height: 28px;"/>
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_notes" style="width: 210px; height: 28px;"/>
                 </div>
             </fieldset>
     </div>
