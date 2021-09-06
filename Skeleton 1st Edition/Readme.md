@@ -3,7 +3,7 @@ Made by DrgnRanger
 
 ### Changelog
 **v1.10 (07-05-2021)**
-* added base unarmed attack to wepaons
+* added base unarmed attack to weapons
 * stylized repeating section for weapons to fit better
 
 **v1.01 (07-05-2021)**
