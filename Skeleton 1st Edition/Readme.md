@@ -2,6 +2,11 @@
 Made by DrgnRanger
 
 ### Changelog
+**v1.20 (09-09-2021)**
+* added a whisper to gm roll option
+* added exhaustion tracking with a toggle option to turn on/off disadvantage in rolls
+* 
+
 **v1.10 (07-05-2021)**
 * added base unarmed attack to weapons
 * stylized repeating section for weapons to fit better
