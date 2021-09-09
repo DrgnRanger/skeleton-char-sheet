@@ -39,15 +39,15 @@ p{
 /*Lagre grid confiuration*/
 .sheet-thecharacter{
     width: 842px;
-    grid-template-columns: 180px 180px 474px;
+    grid-template-columns: 180px 474px 180px;
     grid-template-rows: min-content min-content min-content 1fr 1fr min-content;
     gap: 5px 5px;
     grid-template-areas:
         "skeleton chainf ."
         "weapons weapons weapons"
         "advdi bocu bocu"
-        "stats biom iteq"
-        "stats biom iteq"
+        "stats iteq biom"
+        "stats iteq biom"
         "skills skills skills";
 }
 
@@ -83,14 +83,15 @@ p{
     grid-area: stats;
     display: grid;
     grid-template-columns: 84px 84px; 
-    grid-template-rows: repeat(5, min-content); 
+    grid-template-rows:  repeat(9, min-content); 
     gap: 2px 2px; 
     grid-template-areas: 
         "st st"
         "agi cha"
         "dex cun"
         "con will"
-        "str luck"; 
+        "str luck"
+        "exdis exdis";
 }
 
 .sheet-subblock{
@@ -107,6 +108,44 @@ p{
     padding: 3px;
     border: 1px solid black;
     font-family:'Castoro'
+}
+
+/*Whisper togle radio formatting, just hidden radio buttons*/
+.sheet-wh-toggle {
+    display: grid;
+    text-align: center;
+    position: relative;
+    grid-template-columns: 40px 60px 60px;
+}
+
+div.sheet-wh-toggle span {
+    display: grid;
+    position: relative;
+    color: black;
+    text-align: center;
+    z-index: 1;
+}
+
+.sheet-wh-toggle input[type="radio"]:checked + span {
+    color: white;
+    background-color: #000000;
+    box-shadow: inset 0px 0px 3px 1px #383838;
+}
+
+div.sheet-wh-toggle input[type="radio"] {
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    height: 18px;
+    opacity: 0;
+    width: 60px;
+    z-index: 2;
+}
+    
+input.sheet-toggles[value*="color:neutral"] ~ div.sheet-wh-toggle input[type="radio"]:checked + span {
+    background-color: white;
+    color: black;
+    box-shadow: inset 0px 0px 3px 1px black;
 }
 
 .sheet-traitdie{
@@ -157,6 +196,10 @@ p{
     grid-area: luck;
 }
 
+.sheet-exhaustion-disadvantage{
+    grid-area: exdis;
+}
+
 /*Biometrics sheet configuration*/
 .sheet-biometrics{ 
     grid-area: biom;
@@ -166,9 +209,9 @@ p{
     gap: 2px 2px; 
     grid-template-areas: 
         "bio bio"
+        "biorolls biorolls"
         "inju condi"
-        "armo mov"
-        "biorolls biorolls";
+        "armo mov";
 }
 
 .sheet-biomenu{
