@@ -5,7 +5,7 @@ Made by DrgnRanger
 **v1.20 (09-09-2021)**
 * added a whisper to gm roll option
 * added exhaustion tracking with a toggle option to turn on/off disadvantage in rolls
-* 
+* made auto-calculating fields for blood-points, exhaustion, physical and mental injuries into text worker calculations
 
 **v1.10 (07-05-2021)**
 * added base unarmed attack to weapons
