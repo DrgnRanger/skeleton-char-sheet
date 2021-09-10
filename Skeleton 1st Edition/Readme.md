@@ -2,6 +2,10 @@
 Made by DrgnRanger
 
 ### Changelog
+**v1.30 (09-09-2021)**
+* revamped rolling system to simplify rolling for ability/skill checks
+* changed positions of rolls to better group objects in character sheet
+
 **v1.20 (09-09-2021)**
 * added a whisper to gm roll option
 * added exhaustion tracking with a toggle option to turn on/off disadvantage in rolls
