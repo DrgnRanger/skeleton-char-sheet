@@ -61,7 +61,7 @@
     		    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
     		    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
             </select>
-            <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=Unarmed Attack}} {{subtitle=@{character_name}}} {{Result=[[@{unarmed_damage}! + @{unarmed_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_UnarmedAttack">Attack</button>
+            <button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Unarmed Attack}} {{subtitle=@{character_name}}} {{Result=[[@{unarmed_damage}! + @{unarmed_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_UnarmedAttack">Attack</button>
             <input class="sheet-input-center-aligned" type="text" value="Melee" name="attr_unarmed_range" disabled="true" style="width: 85px; height: 28px;"/>
             <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_ammo" disabled="true" style="width: 45px; height: 28px;"/>
             <input class="sheet-input-center-aligned" type="text" value="N/A" name="attr_unarmed_size" disabled="true" style="width: 46px; height: 28px;"/>
@@ -103,7 +103,7 @@
     				    <option value="1d@{custom_skill_4}!">Custom Skill 4</option>
     				    <option value="1d@{custom_skill_5}!">Custom Skill 5</option>
     			    </select>
-    			    <button type="roll" class="txt-btn" value="&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_DefaultAttack">Attack</button>
+    			    <button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=@{weapon_name} Attack}} {{subtitle= @{character_name}}} {{Result=[[@{weapon_damage}! + @{weapon_attack_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" style="width: 37px; height: 18px;" name="roll_DefaultAttack">Attack</button>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_range" placeholder="15/30/45" style="width: 85px; height: 28px;"/>
                     <input class="sheet-input-center-aligned" type="text" value="" name="attr_weapon_ammo" style="width: 45px; height: 28px;"/>
                     <select name="attr_weapon_size" title="@{weapon_size}" class="sheet-weaponsize" style="width: 46px;" value="1">
@@ -150,32 +150,217 @@
             </div>
         </div>
     </div>
-
+    
+    <!--Boons and curses section, quite simple-->
+    <div class="sheet-curses-boons sheet-block">
+        <div class="sheet-boons sheet-block">
+            <label>Boons</label>
+            <div class="textbox">
+                <div class="options">
+                    <textarea name="" style="min-height: 200px; height: 200px; max-width: 300px; max-height: 200px; min-width: 300px;"></textarea>
+                </div>
+            </div>
+        </div>
+    
+        <div class="sheet-curses sheet-block">
+            <label>Curses</label>
+            <div class="textbox">
+                <div class="options">
+                    <textarea name="" style="min-height: 200px; height: 200px; max-width: 300px; max-height: 200px; min-width: 300px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--All rolling things, uses the hidden checkboxes to put rolls in, which could be altered to not include them in the future (see above repeating sections)-->
+    <div class="sheet-all-rolls sheet-block">
+        <!--Main rolls that one can do in skeleton, select two attributes/skills to roll-->
+        <div class="sheet-atribute-rolls sheet-subblock">
+            <label>Skill and Ability Rolls</label>
+            <div class="sheet-rolls-row">
+                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" name="act_roll_ability" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Ability Check}} {{subtitle= @{character_name}}} {{Result=[[@{ability_roll_1} + @{ability_roll_2} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_AbilityCheck">Ability Check</button></div>
+                <select name="attr_ability_roll_1" title="@{ability_roll_1}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                    <option value="1d0">None</option>
+    				<option value="@{agilitycheck}">Agility</option>
+    				<option value="@{charismacheck}">Charisma</option>
+    				<option value="@{dexteritycheck}">Dexterity</option>
+    				<option value="@{constitutioncheck}">Constitution</option>
+    				<option value="@{willpowercheck}">Willpower</option>
+    				<option value="@{strengthcheck}">Strength</option>
+    				<option value="@{luckcheck}">Luck</option>
+    			</select>
+    			<select name="attr_ability_roll_2" title="@{ability_roll_2}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                    <option value="1d0">None</option>
+    				<option value="@{agilitycheck}">Agility</option>
+    				<option value="@{charismacheck}">Charisma</option>
+    				<option value="@{dexteritycheck}">Dexterity</option>
+    				<option value="@{constitutioncheck}">Constitution</option>
+    				<option value="@{willpowercheck}">Willpower</option>
+    				<option value="@{strengthcheck}">Strength</option>
+    				<option value="@{luckcheck}">Luck</option>
+    		    </select>
+            </div> 
+                
+                <div class="sheet-rolls-row">    
+                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" name="act_roll_skill" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Skill Check}} {{subtitle=@{character_name}}} {{Result=[[@{skill_roll_1} + @{skill_roll_2} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_SkillCheck">Skill Check</button></div>
+                    <select name="attr_skill_roll_1" title="@{skill_roll_1}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                    <option value="1d0">None</option>
+    				<option value="@{agilitycheck}">Agility</option>
+    				<option value="@{charismacheck}">Charisma</option>
+    				<option value="@{dexteritycheck}">Dexterity</option>
+    				<option value="@{constitutioncheck}">Constitution</option>
+    				<option value="@{willpowercheck}">Willpower</option>
+    				<option value="@{strengthcheck}">Strength</option>
+    				<option value="@{luckcheck}">Luck</option>
+    				<option value="@{acrobatcheck}">Acrobat</option>
+    				<option value="@{climbcheck}">Climb</option>
+    				<option value="@{coercecheck}">Coerce</option>
+    				<option value="@{engineercheck}">Engineer</option>
+    				<option value="@{insightcheck}">Insight</option>
+    				<option value="@{martial_artscheck}">Martial Arts</option>
+    				<option value="@{performancecheck}">Performance</option>
+    				<option value="@{pilotcheck}">Pilot</option>
+    				<option value="@{rangercheck}">Ranger</option>
+    				<option value="@{sleight_of_handcheck}">Sleight of Hand</option>
+    				<option value="@{stealthcheck}">Stealth</option>
+    				<option value="@{swimcheck}">Swim</option>
+    				<option value="@{treat_injurycheck}">Treat Injury</option>
+    				<option value="@{throwingcheck}">Throwing</option>
+    				<option value="@{custom_skill_1check}">Custom Skill 1</option>
+    				<option value="@{custom_skill_2check}">Custom Skill 2</option>
+    				<option value="@{custom_skill_3check}">Custom Skill 3</option>
+    				<option value="@{custom_skill_4check}">Custom Skill 4</option>
+    				<option value="@{custom_skill_5check}">Custom Skill 5</option>
+    			</select>
+    		    <select name="attr_skill_roll_2" title="@{skill_roll_2}" class="sheet-weapon-attackdie" style="width: 100px;" value="None">
+                    <option value="1d0">None</option>
+    				<option value="@{agilitycheck}">Agility</option>
+    				<option value="@{charismacheck}">Charisma</option>
+    				<option value="@{dexteritycheck}">Dexterity</option>
+    				<option value="@{constitutioncheck}">Constitution</option>
+    				<option value="@{willpowercheck}">Willpower</option>
+    				<option value="@{strengthcheck}">Strength</option>
+    				<option value="@{luckcheck}">Luck</option>
+    				<option value="@{acrobatcheck}">Acrobat</option>
+    				<option value="@{climbcheck}">Climb</option>
+    				<option value="@{coercecheck}">Coerce</option>
+    				<option value="@{engineercheck}">Engineer</option>
+    				<option value="@{insightcheck}">Insight</option>
+    				<option value="@{martial_artscheck}">Martial Arts</option>
+    				<option value="@{performancecheck}">Performance</option>
+    				<option value="@{pilotcheck}">Pilot</option>
+    				<option value="@{rangercheck}">Ranger</option>
+    				<option value="@{sleight_of_handcheck}">Sleight of Hand</option>
+    				<option value="@{stealthcheck}">Stealth</option>
+    				<option value="@{swimcheck}">Swim</option>
+    				<option value="@{treat_injurycheck}">Treat Injury</option>
+    				<option value="@{throwingcheck}">Throwing</option>
+    				<option value="@{custom_skill_1check}">Custom Skill 1</option>
+    				<option value="@{custom_skill_2check}">Custom Skill 2</option>
+    				<option value="@{custom_skill_3check}">Custom Skill 3</option>
+    				<option value="@{custom_skill_4check}">Custom Skill 4</option>
+    				<option value="@{custom_skill_5check}">Custom Skill 5</option>
+    	        </select>
+            </div>
+            
+            <div class="sheet-rolls-row">
+                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Initiative}} {{subtitle= @{character_name}}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_DefaultInitiative">Default Initiative</button></div>
+            </div>
+        </div>
+        
+        <div class="sheet-biom-rolls">
+            <!--These are the usual rolls for soak, and armor value can be customized from the sheet using specific dice and an ability if necessary-->
+            <div class="sheet-biometric-rolls sheet-subblock">
+                <label>Biometric Rolls</label>
+                <div class="sheet-rolls-row">
+                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Physical Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak">Default Phys. Soak</button></div>
+                </div>
+            
+                <div class="sheet-rolls-row">
+                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Mental Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Default Ment. Soak</button></div>
+                </div>
+            
+                <div class="sheet-rolls-row">
+                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Armor Soak}} {{subtitle=@{character_name}}} {{Soak=[[@{armor}! + @{armor_soak_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Armor Soak</button></div>
+                </div>
+                <!--Buttons for toggling GM whispering-->
+                <div class="sheet-wh-toggle sheet-rolls-row sheet-subblock" style="width: 96.5%;">
+                    <span>All Rolls:</span>
+                    <div><input class="sheet-w-toggle" name="attr_whisper_toggle" type="radio" value="" checked="checked"/><span>Public</span></div>
+                    <div><input class="sheet-w-toggle" name="attr_whisper_toggle" type="radio" value="/w gm "/><span>To GM</span></div>
+                </div>
+            </div>
+        </div>
+        
+    <!--Avantage or disadvantage, with an extra dice in case there is a need for more generic dice to be rolled and tracked on the sheet (usually these don't go above a d12, but they could go up to a d12 + d4, or they could be used to add to a skill with a d12 + d4 modifier)-->
+    <div class="sheet-advantage-disadvantage sheet-subblock">
+        <!--Note that these use the old checkbox system with rolls to keep advantage and disaddvantae seperated-->
+        <label>Advantage and Disadvatage</label>
+        <div class="sheet-rolls-row">
+        <div class="sheet-rolls-col sheet-substat">
+            <span>Advantage</span>
+                <div>
+                    <select name="attr_advantage" title="@{advantage}" class="sheet-advdisdie" value="4">
+                        <option value="4">d4</option>
+    				    <option value="6">d6</option>
+    				    <option value="8">d8</option>
+    				    <option value="10">d10</option>
+    				    <option value="12">d12</option>
+    		        </select>
+    		        <span>
+    			        <input type="checkbox" name="attr_advantagecheck" value="1d@{advantage}!"/>
+    			    </span>
+    			</div>
+    	    <span>Disadvantage</span>
+                <div>
+                    <select name="attr_disadvantage" title="@{disadvantage}" class="sheet-advdisdie" value="4">
+                        <option value="4">d4</option>
+    			    	<option value="6">d6</option>
+    			    	<option value="8">d8</option>
+    				    <option value="10">d10</option>
+    			    	<option value="12">d12</option>
+    			    </select>
+    			    <span>
+    			        <input type="checkbox" name="attr_disadvantagecheck" value="1d@{disadvantage}!"/>
+    			    </span>
+    			</div>
+    	</div>
+    	<div class="sheet-rolls-col sheet-substat">
+    	    <span>Extra Adv. Die</span>
+                <div>
+                    <select name="attr_extra_adv_die" title="@{extra_adv_die}" class="sheet-advdisdie" value="4">
+                        <option value="4">d4</option>
+    				    <option value="6">d6</option>
+    				    <option value="8">d8</option>
+    				    <option value="10">d10</option>
+    				    <option value="12">d12</option>
+    			    </select>
+    			    <span>
+    			        <input type="checkbox" name="attr_extra_advantagecheck" value="1d@{extra_adv_die}!"/>
+    			    </span>
+    			</div>
+    	    <span>Extra Dis. Die</span>
+                <div>
+                    <select name="attr_extra_dis_die" title="@{extra_dis_die}" class="sheet-advdisdie" value="4">
+                        <option value="4">d4</option>
+    				    <option value="6">d6</option>
+    				    <option value="8">d8</option>
+    				    <option value="10">d10</option>
+    				    <option value="12">d12</option>
+    			    </select>
+    			    <span>
+    			        <input type="checkbox" name="attr_extra_disadvantagecheck" value="1d@{extra_dis_die}!"/>
+    			    </span>
+    			</div>
+    	</div>
+    	</div>
+    </div>
+    </div>
+    
     <!--Note that these role templates are very long due to the nature of selecting what to roll, so more than the usual two dice (without advantage) can be selected and can make for a dud roll-->
     <div class="sheet-stats sheet-block">
         <div class="sheet-smstatistics">
             <h3>Attributes</h3>
-            
-            <div class="sheet-attribute-rolls sheet-subblock">
-                <div class="sheet-rolls-row">
-                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Ability Check}} {{subtitle= @{character_name}}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_AbilityCheck">Ability Check</button></div>
-                </div> 
-                
-                <div class="sheet-rolls-row">    
-                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Skill Check}} {{subtitle= @{character_name}}} {{Result=[[@{agilitycheck} + @{charismacheck} + @{dexteritycheck} + @{cunningcheck} + @{constitutioncheck} + @{willpowercheck} + @{strengthcheck} + @{luckcheck} + @{actrobatcheck} + @{climbcheck} + @{coercecheck} + @{engineercheck} + @{insightcheck} + @{marksmancheck} + @{martial_artscheck} + @{performancecheck} + @{pilotcheck} + @{rangercheck} + @{sleight_of_handcheck} + @{stealthcheck} + @{swimcheck} + @{treat_injurycheck} + @{throwingcheck} + @{custom_skill_1check} + @{custom_skill_2check} + @{custom_skill_3check} + @{custom_skill_4check} + @{custom_skill_5check} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_SkillCheck">Skill Check</button></div>
-                </div>
-            
-                <div class="sheet-rolls-row">
-                    <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Initiative}} {{subtitle= @{character_name}}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_DefaultInitiative">Default Initiative</button></div>
-                </div>
-            </div>
-            
-            <!--Buttons for toggling GM whispering-->
-            <div class="sheet-wh-toggle sheet-subblock">
-                <span>Rolls:</span>
-                <div><input class="sheet-w-toggle" name="attr_whisper_toggle" type="radio" value="" checked="checked"/><span>Public</span></div>
-                <div><input class="sheet-w-toggle" name="attr_whisper_toggle" type="radio" value="/w gm "/><span>To GM</span></div>
-            </div>
         </div>
         
         <div class="sheet-agi sheet-subblock">
@@ -188,7 +373,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_agilitycheck" value="1d@{agility}!"/>
+    			    <input type="checkbox" name="attr_agilitycheck" value="1d@{agility}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -202,7 +387,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_charismacheck" value="1d@{charisma}!"/>
+    			    <input type="checkbox" name="attr_charismacheck" value="1d@{charisma}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -216,7 +401,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_dexteritycheck" value="1d@{dexterity}!"/>
+    			    <input type="checkbox" name="attr_dexteritycheck" value="1d@{dexterity}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -230,7 +415,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_cunningcheck" value="1d@{cunning}!"/>
+    			    <input type="checkbox" name="attr_cunningcheck" value="1d@{cunning}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -244,7 +429,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_constitutioncheck" value="1d@{constitution}!"/>
+    			    <input type="checkbox" name="attr_constitutioncheck" value="1d@{constitution}!"checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -258,7 +443,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_willpowercheck" value="1d@{willpower}!"/>
+    			    <input type="checkbox" name="attr_willpowercheck" value="1d@{willpower}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -272,7 +457,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_strengthcheck" value="1d@{strength}!"/>
+    			    <input type="checkbox" name="attr_strengthcheck" value="1d@{strength}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -286,7 +471,7 @@
     				<option value="12">d12</option>
     			</select></span>
     			<span>
-    			    <input type="checkbox" name="attr_luckcheck" value="1d@{luck}!"/>
+    			    <input type="checkbox" name="attr_luckcheck" value="1d@{luck}!" checked="checked" style="display: none;"/>
     			</span>
         </div>
         
@@ -416,21 +601,6 @@
                     </div>
                 </div>
         </div>
-        
-        <!--These are the usual rolls for soak, and armor value can be customized from the sheet using specific dice and an ability if necessary-->
-        <div class="sheet-biometric-rolls sheet-subblock">
-            <div class="sheet-rolls-row">
-                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Physical Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{constitution}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultPhysicalSoak">Default Phys. Soak</button></div>
-            </div>
-            
-            <div class="sheet-rolls-row">
-                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Mental Soak}} {{subtitle=@{character_name}}} {{Soak=[[1d@{cunning}! + 1d@{willpower}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Default Ment. Soak</button></div>
-            </div>
-            
-            <div class="sheet-rolls-row">
-                <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Armor Soak}} {{subtitle=@{character_name}}} {{Soak=[[@{armor}! + @{armor_soak_ability} + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck}]]}}" name="roll_DefaultMentalSoak">Armor Soak</button></div>
-            </div>
-        </div>
     </div>
    
     <!--Items and equipment paragraphs, the equipment block could be improved through customization of the input boxes, the other large slot is greyed out due to needing a boon to equip something there-->
@@ -495,7 +665,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_actrobatcheck" value="1d@{acrobat}!"/>
+    			    <input type="checkbox" name="attr_actrobatcheck" value="1d@{acrobat}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -510,7 +680,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_climbcheck" value="1d@{climb}!"/>
+    			    <input type="checkbox" name="attr_climbcheck" value="1d@{climb}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -525,7 +695,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			        <input type="checkbox" name="attr_coercecheck" value="1d@{coerce}!"/>
+    			    <input type="checkbox" name="attr_coercecheck" value="1d@{coerce}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -540,7 +710,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_engineercheck" value="1d@{engineer}!"/>
+    			    <input type="checkbox" name="attr_engineercheck" value="1d@{engineer}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -555,7 +725,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_insightcheck" value="1d@{insight}!"/>
+    			    <input type="checkbox" name="attr_insightcheck" value="1d@{insight}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -572,7 +742,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_marksmancheck" value="1d@{marksman}!"/>
+    			    <input type="checkbox" name="attr_marksmancheck" value="1d@{marksman}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -587,7 +757,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_martial_artscheck" value="1d@{martial_arts}!"/>
+    			    <input type="checkbox" name="attr_martial_artscheck" value="1d@{martial_arts}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -602,7 +772,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_performancecheck" value="1d@{performance}!"/>
+    			    <input type="checkbox" name="attr_performancecheck" value="1d@{performance}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -617,7 +787,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_pilotcheck" value="1d@{pilot}!"/>
+    			    <input type="checkbox" name="attr_pilotcheck" value="1d@{pilot}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -632,7 +802,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_rangercheck" value="1d@{ranger}!"/>
+    			    <input type="checkbox" name="attr_rangercheck" value="1d@{ranger}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -649,7 +819,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_sleight_of_handcheck" value="1d@{sleight_of_hand}!"/>
+    			    <input type="checkbox" name="attr_sleight_of_handcheck" value="1d@{sleight_of_hand}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -664,7 +834,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_stealthcheck" value="1d@{stealth}!"/>
+    			    <input type="checkbox" name="attr_stealthcheck" value="1d@{stealth}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -679,7 +849,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_swimcheck" value="1d@{swim}!"/>
+    			    <input type="checkbox" name="attr_swimcheck" value="1d@{swim}!" checked="checked" style="display: none;"/>
     			</span></div>
    
             </div>
@@ -694,7 +864,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_treat_injurycheck" value="1d@{treat_injury}!"/>
+    			    <input type="checkbox" name="attr_treat_injurycheck" value="1d@{treat_injury}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
@@ -709,7 +879,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_throwingcheck" value="1d@{throwing}!"/>
+    			    <input type="checkbox" name="attr_throwingcheck" value="1d@{throwing}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -728,7 +898,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_custom_skill_1check" value="1d@{custom_skill_1}!"/>
+    			    <input type="checkbox" name="attr_custom_skill_1check" value="1d@{custom_skill_1}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -745,7 +915,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_custom_skill_2check" value="1d@{custom_skill_2}!"/>
+    			    <input type="checkbox" name="attr_custom_skill_2check" value="1d@{custom_skill_2}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -762,7 +932,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_custom_skill_3check" value="1d@{custom_skill_3}!"/>
+    			    <input type="checkbox" name="attr_custom_skill_3check" value="1d@{custom_skill_3}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -779,7 +949,7 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_custom_skill_4check" value="1d@{custom_skill_4}!"/>
+    			    <input type="checkbox" name="attr_custom_skill_4check" value="1d@{custom_skill_4}!" checked="checked" style="display: none;"/>
     			</span></div>
 
             </div>
@@ -796,89 +966,11 @@
     				<option value="10">d10</option>
     				<option value="12">d12</option>
     			</select>
-    			    <input type="checkbox" name="attr_custom_skill_5check" value="1d@{custom_skill_5}!"/>
+    			    <input type="checkbox" name="attr_custom_skill_5check" value="1d@{custom_skill_5}!" checked="checked" style="display: none;"/>
     			</span></div>
     			
             </div>
         </div>
-    </div>
-    
-    <!--Boons and curses section, quite simple-->
-    <div class="sheet-curses-boons sheet-block">
-        <div class="sheet-boons sheet-block">
-            <label>Boons</label>
-            <div class="textbox">
-                <div class="options">
-                    <textarea name="" style="min-height: 200px; height: 200px; max-width: 300px; max-height: 200px; min-width: 300px;"></textarea>
-                </div>
-            </div>
-        </div>
-    
-        <div class="sheet-curses sheet-block">
-            <label>Curses</label>
-            <div class="textbox">
-                <div class="options">
-                    <textarea name="" style="min-height: 200px; height: 200px; max-width: 300px; max-height: 200px; min-width: 300px;"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!--Avantage or disadvantage, with an extra dice in case there is a need for more generic dice to be rolled and tracked on the sheet (usually these don't go above a d12, but they could go up to a d12 + d4, or they could be used to add to a skill with a d12 + d4 modifier)-->
-    <div class="sheet-advantage-disadvantage sheet-block">
-        <label>Advantage and Disadvatage</label>
-        <span>Advantage</span>
-                <div>
-                    <select name="attr_advantage" title="@{advantage}" class="sheet-advdisdie" value="4">
-                        <option value="4">d4</option>
-    				    <option value="6">d6</option>
-    				    <option value="8">d8</option>
-    				    <option value="10">d10</option>
-    				    <option value="12">d12</option>
-    		        </select>
-    		        <span>
-    			        <input type="checkbox" name="attr_advantagecheck" value="1d@{advantage}!"/>
-    			    </span>
-    			</div>
-    	<span>Disadvantage</span>
-                <div>
-                    <select name="attr_disadvantage" title="@{disadvantage}" class="sheet-advdisdie" value="4">
-                        <option value="4">d4</option>
-    			    	<option value="6">d6</option>
-    			    	<option value="8">d8</option>
-    				    <option value="10">d10</option>
-    			    	<option value="12">d12</option>
-    			    </select>
-    			    <span>
-    			        <input type="checkbox" name="attr_disadvantagecheck" value="1d@{disadvantage}!"/>
-    			    </span>
-    			</div>
-    	<span>Extra Adv. Die</span>
-                <div>
-                    <select name="attr_extra_adv_die" title="@{extra_adv_die}" class="sheet-advdisdie" value="4">
-                        <option value="4">d4</option>
-    				    <option value="6">d6</option>
-    				    <option value="8">d8</option>
-    				    <option value="10">d10</option>
-    				    <option value="12">d12</option>
-    			    </select>
-    			    <span>
-    			        <input type="checkbox" name="attr_extra_advantagecheck" value="1d@{extra_adv_die}!"/>
-    			    </span>
-    			</div>
-    	<span>Extra Dis. Die</span>
-                <div>
-                    <select name="attr_extra_dis_die" title="@{extra_dis_die}" class="sheet-advdisdie" value="4">
-                        <option value="4">d4</option>
-    				    <option value="6">d6</option>
-    				    <option value="8">d8</option>
-    				    <option value="10">d10</option>
-    				    <option value="12">d12</option>
-    			    </select>
-    			    <span>
-    			        <input type="checkbox" name="attr_extra_disadvantagecheck" value="1d@{extra_dis_die}!"/>
-    			    </span>
-    			</div>
     </div>
 </div>
 
