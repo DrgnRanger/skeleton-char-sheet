@@ -2,6 +2,11 @@
 Made by DrgnRanger
 
 ### Changelog
+**v1.40 (09-10-2021)**
+* added repeating sections for boons/curses
+* edited layout of sheet to create better stylized pieces
+* edited repeating sections buttons to make them look like all other buttons on the sheet
+
 **v1.30 (09-09-2021)**
 * revamped rolling system to simplify rolling for ability/skill checks
 * changed positions of rolls to better group objects in character sheet
