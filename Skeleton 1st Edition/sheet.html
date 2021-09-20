@@ -157,10 +157,15 @@
             <label>Boons</label>
             <div class="sheet-repeating-boons">
                 <fieldset class="repeating_boons">
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_boon_name" title="@{boon_name}" placeholder="Boon Name" style="width: 200px; height: 28px;"/>
-                    <span>Toggle Description:</span>
-                    <input type="checkbox" class="sheet-toggle-show"/>
-                    <div class="sheet-description"><textarea name="attr_boon_description" placeholder="Boon description" style="min-height: 200px; height: 200px; margin-top: 0px; margin-bottom: 0px; width: 390px; max-width: 390px;"></textarea></div>
+                    <div class="sheet-substat">
+                        <input class="sheet-input-center-aligned" type="text" value="" name="attr_boon_name" title="@{boon_name}" placeholder="Boon Name" style="width: 200px; height: 28px;"/>
+                        <span>Resource:</span>
+                        <input type="checkbox" class="sheet-toggle-show-resource"/>
+                        <span>Desc:</span>
+                        <input type="checkbox" class="sheet-toggle-show-desc"/>
+                        <div class="sheet-bocu-resource"><span>Current:</span><input type="text" name="attr-boon-current-resource" style="width: 40px;"><span>Total:</span><input type="text" name="attr-boon-total-resource" style="width: 40px;"></div>
+                        <div class="sheet-description"><textarea name="attr_boon_description" placeholder="Boon description" style="min-height: 200px; height: 200px; margin-top: 0px; margin-bottom: 0px; width: 390px; max-width: 390px;"></textarea></div>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -169,10 +174,15 @@
             <label>Curses</label>
             <div class="sheet-repeating-curses">
                 <fieldset class="repeating_curses">
-                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_curse_name" title="@{curse_name}" placeholder="Curse Name" style="width: 200px; height: 28px;"/>
-                    <span>Toggle Description:</span>
-                    <input type="checkbox" class="sheet-toggle-show"/>
-                    <div class="sheet-description"><textarea name="attr_curse_description" placeholder="Curse description" style="min-height: 200px; height: 200px; margin-top: 0px; margin-bottom: 0px; width: 390px; max-width: 390px;"></textarea></div>
+                    <div class="sheet-substat">
+                        <input class="sheet-input-center-aligned" type="text" value="" name="attr_curse_name" title="@{curse_name}" placeholder="Curse Name" style="width: 200px; height: 28px;"/>
+                        <span>Resource:</span>
+                        <input type="checkbox" class="sheet-toggle-show-resource"/>
+                        <span>Desc:</span>
+                        <input type="checkbox" class="sheet-toggle-show-desc"/>
+                        <div class="sheet-bocu-resource"><span>Current:</span><input type="text" name="attr-curse-current-resource" style="width: 40px;"><span>Total:</span><input type="text" name="attr-curse-total-resource" style="width: 40px;"></div>
+                        <div class="sheet-description"><textarea name="attr_curse_description" placeholder="Curse description" style="min-height: 200px; height: 200px; margin-top: 0px; margin-bottom: 0px; width: 390px; max-width: 390px;"></textarea></div>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -271,6 +281,11 @@
             
             <div class="sheet-rolls-row">
                 <div class="sheet-rolls-col"><button type="roll" class="txt-btn" value="@{whisper_toggle}&{template:skeleton} {{color=black}} {{title=Default Initiative}} {{subtitle= @{character_name}}} {{Initiative=[[1d@{agility}! + 1d@{cunning}! + @{advantagecheck} + @{extra_advantagecheck} - @{disadvantagecheck} - @{extra_disadvantagecheck} - @{exhaustion_check}]]}}" name="roll_DefaultInitiative" style="height: 18px;">Default Initiative</button></div>
+            </div>
+            
+            <div class="sheet-luck-tokens">
+                <span>Luck Token(s):</span>
+                <input type="number" name="attr_luck_tokens" title="@{luck_token}" style="width: 40px;" min = "0" max = "3" step="1">
             </div>
         </div>
         
@@ -481,14 +496,11 @@
     			</span>
         </div>
         
-        <!--Exhaustion tracking, can be toggled on or off for certian abilities-->
-        <div class="sheet-exhaustion-disadvantage sheet-subblock">
-            <label>Exhaustion Effects</label>
-            
-            <div class="sheet-exhaustion-effects sheet-substat">
-                <span>Toggle Exh. Tracking:</span>
-                <input  type="checkbox" name="attr_exhaustion_check" title="@{exhaustion_check}" value="@{exhaustion_tracking}"/>
-                <div>Dis. Level:<input name="attr_exhaustion_tracking" title="@{exhaustion_tracking}" class="sheet-disadvantage-level" readonly="readonly" style="width: 60px;">
+            <!--Exhaustion tracking, can be toggled on or off for certian abilities-->
+            <div class="sheet-exhaustion-disadvantage sheet-subblock">
+                <label>Exhaustion Effects</label>
+                <div class="sheet-exhaustion-effects sheet-substat">
+                    <div>Dis. Level:<input name="attr_exhaustion_tracking" title="@{exhaustion_tracking}" class="sheet-disadvantage-level" readonly="readonly" style="width: 60px;">
                 </div>
             </div>
         </div>
@@ -637,10 +649,13 @@
         
         <div class="sheet-addit sheet-subblock">
             <label>Additional Items</label>
-            <div class="textbox">
-                <div class="options">
-                    <textarea name="" style="min-height: 406px; height: 406px; max-height: 494px; max-width: 210px; min-width: 210px;"></textarea>
-                </div>
+            <div class="sheet-repeating-boons">
+                <fieldset class="repeating_quipment">
+                    <input class="sheet-input-center-aligned" type="text" value="" name="attr_equipment_name" title="@{equipment_name}" placeholder="Equipment Name" style="width: 150px;"/>
+                    <span>Desc:</span>
+                    <input type="checkbox" class="sheet-toggle-show-desc"/>
+                    <div class="sheet-description"><textarea name="attr_equipment_description" placeholder="Equipment description" style="min-height: 200px; height: 200px; margin-top: 0px; margin-bottom: 0px; max-width: 210px; width : 210; min-width: 210px;"></textarea></div>
+                </fieldset>
             </div>
         </div>
         
@@ -1010,10 +1025,18 @@
     </div>
 </div>
 
-<!--Placeholder page in case there are mroe complex things to add to the sheet-->
+<!--A few more complex settings, more can be added later-->
 <div class="sheet-config">
     <h2>Config/Settings</h2>
-    <span>This is a placeholder for possibly more complex things later</span> 
+    <div>
+        <span>Toggle Exh. Tracking:</span>
+        <input  type="checkbox" name="attr_exhaustion_check" title="@{exhaustion_check}" value="@{exhaustion_tracking}"/>
+    </div>
+    
+    <div>
+        <span>Toggle Heroic Character:</span>
+        <input  type="checkbox" name="attr_heroic_character" title="@{heroic_character}"  value="1"/>
+    </div>
 </div>
 
 <!--Custom roll table for this sheet, uses Jakob's Better Default Rolltemplate with some customization-->
@@ -1046,14 +1069,24 @@
     });
     
     //Changing max injuries, blood points, and max exhaustion
-    on("change:willpower change:constitution sheet:opened", function() {
-        getAttrs(["willpower", "constitution"], function(values) {
+    on("change:willpower change:constitution change:heroic_character sheet:opened", function() {
+        getAttrs(["willpower", "constitution", "heroic_character"], function(values) {
             let will = parseInt(values["willpower"]) || 0;
             let con = parseInt(values["constitution"]) || 0;
-        
+            let heroic = parseInt(values["heroic_character"]) || 0;
+            console.log(heroic);
+            
             let mentInjMax = will / 2;
             let physInjMax = con / 2;
-            let exhMax = mentInjMax + physInjMax;
+            let maxInj = Math.max(mentInjMax, physInjMax);
+            let minInj = Math.min(mentInjMax, physInjMax)
+
+            if (heroic == 1) {
+                var exhMax = (2 * maxInj) + minInj;
+            }
+            else {
+                var exhMax = mentInjMax + physInjMax;
+            }
             
             setAttrs({                            
                 mental_injuries_max: mentInjMax,
@@ -1066,10 +1099,10 @@
     });
     
     //Changes effects based on exhaustion level and max exhaustion
-    on("change:exhaustion_lvl sheet:opened", function() {
+    on("change:exhaustion_lvl change:exhaustion_max change:heroic_character sheet:opened", function() {
     getAttrs(["exhaustion_lvl", "exhaustion_max"], function(values) {
         const output = {};
-
+        
         const exhaust = parseInt(values["exhaustion_lvl"]) || 0;
         const maxExhaust = parseInt(values["exhaustion_max"]) || 0;
         
@@ -1084,8 +1117,11 @@
         else if ((exhaust >= (exhDivision + 2)) && (exhaust < (exhDivision + 4)) && !(exhaust >= maxExhaust)) {
             output["exhaustion_tracking"] = "1d6!";
         }
-        else if ((exhaust >= (exhDivision + 4))  && (exhaust < maxExhaust)) {
+        else if ((exhaust >= (exhDivision + 4))  && (exhaust < (exhDivision + 2)) && !(exhaust >= maxExhaust)) {
             output["exhaustion_tracking"] = "1d8!";
+        }
+        else if ((exhaust >= (exhDivision + 6))  && (exhaust < maxExhaust)) {
+            output["exhaustion_tracking"] = "1d10!";
         }
         else {
             output["exhaustion_tracking"] = "Incap.";
