@@ -274,7 +274,6 @@ input.sheet-toggles[value*="color:neutral"] ~ div.sheet-wh-toggle input[type="ra
 }
 
 
-
 .sheet-items-equipment{ 
     grid-area: iteq;
     display: grid;
@@ -387,8 +386,13 @@ input.sheet-toggles[value*="color:neutral"] ~ div.sheet-wh-toggle input[type="ra
     grid-area: curse; 
 }
 
-input.sheet-toggle-show:not(:checked) ~ div.sheet-description,
+input.sheet-toggle-show-desc:not(:checked) ~ div.sheet-description,
 input.sheet-toggle-hide:checked ~ div.sheet-description {
+    display: none;
+}
+
+input.sheet-toggle-show-resource:not(:checked) ~ div.sheet-bocu-resource,
+input.sheet-toggle-hide:checked ~ div.sheet-bocu-resource {
     display: none;
 }
 
@@ -536,13 +540,13 @@ input.sheet-weapon-list{
   background-position: 0 -28px;
 }
 
-/*For editing text content of repeating sections (with specific names if necessary)
+/*
 [data-groupname=repeating_skills] > button.btn.repcontrol_add::after {
 	content: " Non-core Skills";
 }
 */
 
-/*Stylizing repeating sections to look like all other buttons*/
+/*For editing the repeating sections buttons to match sheet style*/
 .charsheet .repcontrol_add,
 .charsheet .repcontrol_edit,
 .charsheet .repcontrol_del {
