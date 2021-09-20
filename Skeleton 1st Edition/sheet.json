@@ -1,1 +1,9 @@
-
+{
+  "html": "skeletonsheet.html",
+  "css": "skeletonsheet.css",
+  "authors": "DrgnRanger",
+  "roll20userid": "5432360",
+  "preview": "skeleton_character_sheet_v1.41.png",
+  "instructions": "**This is a test**\n\nYou can put Markdown-formatted instructions here for how to use your sheet. Please try to keep it moderately-short (500 characters or less is preferred).",
+  "legacy": false
+}
