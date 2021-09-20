@@ -1,5 +1,13 @@
 ## Official Character Sheet for Skeleton 1st Edition 
 Made by DrgnRanger
+Skeleton by Warlock Privateer can be found on DrivethruRPG, and itch.io. 
+This is the official endorsed roll20 character sheet for Skeleton. 
+
+**Functionality**
+All attributes/skills can be assigned a d4-d12 dice value which is then used in all roll buttons to roll dice.
+There are sections for extra items, weapons, boons and curses which can be edited. 
+The descriptions/resources for extra items, boons and curses can be accessed through the checkboxes which toggle them on/off.
+The configuration section only has two options currently, but there are more possible config options which can be added as needed. 
 
 ### Changelog
 **v1.41 (09-19-2021)**
