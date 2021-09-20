@@ -1,7 +1,13 @@
-## Character Sheet for Skeleton 1st Edition 
+## Official Character Sheet for Skeleton 1st Edition 
 Made by DrgnRanger
 
 ### Changelog
+**v1.41 (09-19-2021)**
+* added first big config option and moved exhaustion toggle to be under that section
+* changed additional items to be another repeating section with drop-dwon descriptions
+* added drop-down descriptions for boons/curses as well as optional counting resources
+* added a section for luck tokens
+
 **v1.40 (09-10-2021)**
 * added repeating sections for boons/curses
 * edited layout of sheet to create better stylized pieces
